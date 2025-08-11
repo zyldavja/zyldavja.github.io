@@ -306,9 +306,11 @@
     };
 
     function setLang(code){
-      const L = t[code];
-      Object.assign(els.siteTitle, {textContent: L.siteTitle});
-      Object.assign(els.siteSubtitle, {textContent: L.siteSubtitle});
+      const L = t[code] || t.fr;
+
+      // Texte
+      els.siteTitle.textContent = L.siteTitle;
+      els.siteSubtitle.textContent = L.siteSubtitle;
       els.heroTitle.textContent = L.heroTitle;
       els.heroLead.textContent = L.heroLead;
       els.ctaCitizenship.textContent = L.ctaCit;
@@ -334,19 +336,35 @@
       els.fatherRole.textContent = L.fatherRole;
       els.footerNote.textContent = L.footerNote;
 
-      // aria pressed state
+      // Boutons: état aria
       document.querySelectorAll('.langs button').forEach(b=>b.setAttribute('aria-pressed','false'));
-      document.getElementById('lang-'+code).setAttribute('aria-pressed','true');
-      // footer short links not switching content—just cosmetic
+      const activeBtn = document.getElementById('lang-'+code);
+      if(activeBtn) activeBtn.setAttribute('aria-pressed','true');
+
+      // HTML lang
+      document.documentElement.setAttribute('lang', code === 'syl' ? 'sr' : code);
+
+      // Mémoriser
+      try { localStorage.setItem('lang', code); } catch(e) {}
     }
 
-    // Bind buttons
-    document.getElementById('lang-syl').onclick=()=>setLang('syl');
-    document.getElementById('lang-fr').onclick =()=>setLang('fr');
-    document.getElementById('lang-en').onclick =()=>setLang('en');
+    // Bind header buttons
+    document.getElementById('lang-syl').onclick = ()=> setLang('syl');
+    document.getElementById('lang-fr').onclick  = ()=> setLang('fr');
+    document.getElementById('lang-en').onclick  = ()=> setLang('en');
 
-    // Default language
-    setLang('fr');
+    // Bind footer links (empêcher navigation et changer la langue)
+    document.getElementById('footSyl').onclick = (e)=>{ e.preventDefault(); setLang('syl'); };
+    document.getElementById('footFr').onclick  = (e)=>{ e.preventDefault(); setLang('fr');  };
+    document.getElementById('footEn').onclick  = (e)=>{ e.preventDefault(); setLang('en');  };
+
+    // Au chargement : prendre la langue mémorisée, sinon FR
+    (function initLang(){
+      const fromStorage = (()=>{ try { return localStorage.getItem('lang'); } catch(e){ return null; }})();
+      const fromHash = (new URL(location.href)).hash.replace('#','');
+      const initial = ['syl','fr','en'].includes(fromHash) ? fromHash : (fromStorage || 'fr');
+      setLang(initial);
+    })();
   </script>
 </body>
 </html>
