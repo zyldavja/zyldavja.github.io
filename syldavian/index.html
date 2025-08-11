@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Влада Краљевине Зылдавыa</title>
-  <meta name="description" content="Званични (пародијски) портал Владе Краљевине Зылдавыa." />
-  <meta name="color-scheme" content="light only" />
+  <meta name="description" content="Званични (пародијски) портал Краљевине Зылдавыa." />
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <style>
-    :root{--ink:#1f2d3a;--paper:#f7f3ea;--card:#fff;--gold:#f7d449;--line:#e6dfd1;--muted:#6b7280;--accent:#223b54;--shadow:0 10px 20px rgba(31,45,58,.08)}
-    *{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",Arial,"Helvetica Neue",sans-serif}
-    a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-    .container{max-width:1100px;margin:auto;padding:0 16px}.ribbon{background:var(--accent);color:#fff;font-size:12px;text-align:center;padding:8px 10px}
-    header{padding:22px 0}.head{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .crest{width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);border:1px solid #e5e7eb;overflow:hidden}
-    .crest img{width:80%;height:80%;object-fit:contain;display:block}
-    h1{margin:0;font-size:22px}.subtitle{font-size:12px;color:var(--muted);margin-top:2px}
-    .hero{background:linear-gradient(180deg,#ffffffcc,#fff8),
-      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%23f4d35e" offset="0"/><stop stop-color="%23ffffff" offset="1"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><path d="M180 360c120-140 340-140 460 0 60 70 200 70 260 0 120-140 340-140 460 0" fill="none" stroke="%23eae2d3" stroke-width="2"/></svg>')
-      center/cover no-repeat;border-block:1px solid var(--line)}
+    :root{ --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f7d449; --line:#e6dfd1; --muted:#6b7280; --accent:#223b54; --shadow:0 10px 20px rgba(31,45,58,.08); }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:auto;padding:0 16px}
+    .ribbon{background:var(--accent);color:#fff;font-size:12px;text-align:center;padding:8px}
+    header{padding:22px 0}
+    .head{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:14px;align-items:center}
+    .crest{width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);border:1px solid #e5e7eb;overflow:hidden}
+    .crest img{width:82%;height:82%;object-fit:contain;display:block}
+    h1{margin:0;font-size:24px} .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+    .langs a{margin-left:12px}
+    .hero{background:linear-gradient(180deg,#ffffffcc,#fff8), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%23f4d35e" offset="0"/><stop stop-color="%23ffffff" offset="1"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><path d="M180 360c120-140 340-140 460 0 60 70 200 70 260 0 120-140 340-140 460 0" fill="none" stroke="%23eae2d3" stroke-width="2"/></svg>') center/cover no-repeat;border-block:1px solid var(--line)}
     .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;padding:36px 0}
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;box-shadow:var(--shadow);padding:18px}
-    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}.btn{background:var(--accent);color:#fff;border:none;border-radius:14px;padding:10px 14px;font-size:14px;cursor:pointer}
-    .btn.alt{background:var(--gold);color:#2b2b2b}.btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
+    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:14px;padding:10px 14px;font-size:14px}
+    .btn.alt{background:var(--gold);color:#2b2b2b} .btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:26px 0}
-    ul.clean{list-style:none;padding:0;margin:10px 0}ul.clean li{padding-left:10px;position:relative}ul.clean li::before{content:"•";position:absolute;left:0;color:#9aa3ac}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service .btn{margin-top:10px}
-    footer{padding:28px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+    ul.clean{list-style:none;padding:0;margin:10px 0} ul.clean li{padding-left:10px;position:relative} ul.clean li::before{content:"•";position:absolute;left:0;color:#9aa3ac}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    footer{padding:28px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted);}
     @media (max-width:900px){.hero-inner{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div class="ribbon">Пародијски државни портал — омаж Ержеу. „Ејх бенек, ејх блавек“.</div>
+  <div class="ribbon">Пародијски државни портал — омаж Ержеу. „Eih bennek, eih blavek“.</div>
+
   <header>
     <div class="container head">
-      <div style="display:flex;gap:14px;align-items:center">
-        <div class="crest" aria-hidden="true"><img src="../images/logo.png" alt="Грб Зылдавыe"></div>
+      <div class="brand">
+        <div class="crest"><img src="../images/logo.png" alt="Знак Зылдавыa"></div>
         <div>
           <h1>Влада Краљевине Зылдавыa</h1>
           <div class="subtitle">Краљевина Зылдавыa — Државни портал</div>
         </div>
       </div>
-      <nav class="langs">
-        <a href="../index.html">FR</a>
-        <a href="../english/index.html">EN</a>
-        <a href="./index.html" aria-current="page"><strong>СЫЛ</strong></a>
+      <nav class="langs" aria-label="Језици">
+        <a href="../french/index.html">Français</a>
+        <a href="../english/index.html">English</a>
       </nav>
     </div>
   </header>
@@ -53,7 +56,7 @@
       <div class="card">
         <h2 style="margin:0 0 6px 0">Комюнике офицял</h2>
         <p style="margin:0;color:#374151">
-          Добро дошли на заједнички портал Монархије и Владе Краљевине Зылдавыa. Овде ћете наћи обавештења, услуге и објаве.
+          Добро дошли на заједнички портал Монархије и Владе Краљевине Зылдавыa. Званична обавештења и услуге за грађане.
         </p>
         <div class="cta">
           <a class="btn" href="#services">Грађанске услуге</a>
@@ -61,10 +64,11 @@
           <a class="btn ghost" href="#gov">Влада</a>
         </div>
       </div>
+
       <aside class="card">
         <p style="text-transform:uppercase;letter-spacing:.06em;color:#6b7280;margin:0">Краљевски дом</p>
         <h3 style="margin:.2rem 0 .4rem 0">Порука Његовог Величанства</h3>
-        <p style="margin:0;color:#6б7280">„У служби народа Зылдавыe.“</p>
+        <p style="margin:0;color:#6б7280">„У служби народа Зылдавыa.“</p>
         <a href="#royal" style="margin-top:10px;display:inline-block">Прочитај поруку</a>
       </aside>
     </div>
@@ -75,17 +79,17 @@
       <div class="card">
         <h3 style="margin:0 0 6px 0">Вести Владе</h3>
         <ul class="clean">
-          <li>Отварање портала натурализације — Национална служба за држављанство.</li>
-          <li>Објављен индикативни курс ЗК — Краљевска банка у Клову.</li>
-          <li>Саопштење спољних послова — културне размене у Европи.</li>
+          <li>Отворен портал натурализације — Национална служба за држављанство.</li>
+          <li>Објављен индикативни курс ZK — Краљевска банка Клоу.</li>
+          <li>Саопштење спољних послова — европске културне размене.</li>
         </ul>
       </div>
       <div class="card">
-        <h3 style="margin:0 0 6px 0">Билтени Краљевског дома</h3>
+        <h3 style="margin:0 0 6px 0">Вести Краљевског дома</h3>
         <ul class="clean">
-          <li>Недељна аудијенција у Двору у Клову — протоколарни календар.</li>
+          <li>Недељна аудијенција у Дворцу Клоу — протоколарни календар.</li>
           <li>Краљевски указ о очувању историјских грбова.</li>
-          <li>Комеморативне марке: „Ејх бенек, ејх блавек“.</li>
+          <li>Комеморативна издања марака „Eih bennek, eih blavek“.</li>
         </ul>
       </div>
     </div>
@@ -93,19 +97,19 @@
 
   <section id="services" style="border-block:1px solid var(--line);background:#fff">
     <div class="container" style="padding:26px 0">
-      <h3 style="margin:0 0 12px 0">Услуге</h3>
+      <h3 style="margin:0 0 12px 0">Услуге за грађане</h3>
       <div class="grid3">
-        <article class="card service">
+        <article class="card">
           <h4 style="margin:0">Лична карта</h4>
-          <p style="margin:.4rem 0;color:#6b7280">Захтев за националну карту (CR80).</p>
+          <p style="margin:.4rem 0;color:#6b7280">Захтев за издавање или обнову (CR80).</p>
           <a class="btn" href="id-card.html">Поднеси захтев</a>
         </article>
-        <article class="card service">
+        <article class="card">
           <h4 style="margin:0">Натурализација</h4>
-          <p style="margin:.4rem 0;color:#6b7280">Приступ званичном обрасцу Краљевине (PDF + онлајн).</p>
+          <p style="margin:.4rem 0;color:#6b7280">Приступ званичном обрасцу (PDF + онлајн).</p>
           <a class="btn" href="naturalisation.html">Попунити образац</a>
         </article>
-        <article class="card service">
+        <article class="card">
           <h4 style="margin:0">Краљевски гласник</h4>
           <p style="margin:.4rem 0;color:#6b7280">Укази и саопштења министарстава и двора.</p>
           <a class="btn" href="#gazette">Отвори</a>
@@ -119,7 +123,7 @@
       <h3 style="margin:0 0 12px 0">Састав Владе</h3>
       <div class="grid2">
         <div class="card">
-          <p style="margin:0;font-weight:600">Ерика Родица Р Дефосе</p>
+          <p style="margin:0;font-weight:600">Ерика Родика Р Дефосе</p>
           <p style="margin:.2rem 0 0 0;color:#6b7280">Генерална директорка Националне службе за држављанство</p>
         </div>
         <div class="card">
@@ -133,10 +137,10 @@
   <footer>
     <div class="container" style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
       <div>© Влада Краљевине Зылдавыa — 2025 • Пародијски сајт, омаж Ержеу.</div>
-      <div class="langs">
-        <a href="../index.html">FR</a>
-        <a href="../english/index.html">EN</a>
-        <a href="./index.html" aria-current="page"><strong>СЫЛ</strong></a>
+      <div style="display:flex;gap:12px">
+        <a href="../index.html">Почетна (језици)</a>
+        <a href="../french/index.html">Français</a>
+        <a href="../english/index.html">English</a>
       </div>
     </div>
   </footer>
