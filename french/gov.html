@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gouvernement — Royaume de Syldavie</title>
+  <meta name="description" content="Composition du Gouvernement du Royaume de Syldavie, attributions des ministères et liens utiles." />
+  <meta name="color-scheme" content="light only" />
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
+
+  <style>
+    :root{
+      --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f4d35e; --line:#e6dfd1;
+      --muted:#6b7280; --accent:#223b54; --shadow:0 10px 20px rgba(31,45,58,.08);
+      --crest:#f7d449; /* jaune exact du logo */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+      font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans", Arial, "Helvetica Neue", sans-serif}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:auto;padding:0 16px}
+    .ribbon{background:var(--accent);color:#fff;font-size:12px;text-align:center;padding:8px 10px}
+
+    header{padding:22px 0}
+    .head{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:14px;align-items:center}
+    .crest{
+      width:52px;height:52px;border-radius:50%;
+      background:var(--crest);display:flex;align-items:center;justify-content:center;
+      border:1px solid #e5e7eb;box-shadow:var(--shadow);overflow:hidden
+    }
+    .crest img{width:80%;height:80%;object-fit:contain;display:block}
+    h1{margin:0;font-size:22px}
+    .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+
+    .langs{display:flex;gap:12px;font-size:14px}
+    .langs a{
+      border:1px solid #e5e7eb;background:#fff;border-radius:12px;padding:6px 10px;
+      box-shadow:var(--shadow)
+    }
+
+    .hero{border-block:1px solid var(--line);background:linear-gradient(180deg,#ffffffcc,#fff8)}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;padding:28px 0}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;box-shadow:var(--shadow);padding:18px}
+
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:24px 0}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:24px 0}
+    .muted{color:var(--muted)}
+    .tag{display:inline-block;font-size:12px;color:#334155;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:999px;padding:2px 8px;margin-right:6px}
+    .btn{display:inline-block;background:var(--accent);color:#fff;border:none;border-radius:14px;padding:10px 14px;font-size:14px}
+    .btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
+    .list-clean{list-style:none;margin:0;padding:0}
+    .list-clean li{padding-left:12px;position:relative;margin:8px 0}
+    .list-clean li::before{content:"•";position:absolute;left:0;color:#9aa3ac}
+
+    footer{padding:28px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+
+    @media (max-width:900px){
+      .hero-inner{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ribbon">Portail institutionnel fictif — hommage à Hergé. « Eih bennek, eih blavek ».</div>
+
+  <header>
+    <div class="container head">
+      <div class="brand">
+        <div class="crest" aria-hidden="true"><img src="../images/logo.png" alt=""></div>
+        <div>
+          <h1>Gouvernement du Royaume de Syldavie</h1>
+          <div class="subtitle">Краљевина Зылдавыa — Government of the Kingdom of Syldavia</div>
+        </div>
+      </div>
+
+      <nav class="langs" aria-label="Langues">
+        <a href="../syldavian/index.html">Сылдавянски</a>
+        <a href="../english/index.html">English</a>
+        <a href="../french/index.html" title="Accueil français">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- En-tête page -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="card">
+        <h2 style="margin:0 0 6px 0">Composition du Gouvernement</h2>
+        <p class="muted" style="margin:0">
+          Organigramme, attributions des ministères et liens utiles pour contacter les services de l’État syldave.
+        </p>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="./id-card.html">Carte d’identité</a>
+          <a class="btn ghost" href="./naturalisation.html">Naturalisation</a>
+          <a class="btn ghost" href="./gazette.html">Gazette officielle</a>
+        </div>
+      </div>
+      <aside class="card">
+        <p class="muted" style="text-transform:uppercase;letter-spacing:.06em;margin:0">Transparence</p>
+        <h3 style="margin:.2rem 0 .4rem 0">Derniers communiqués</h3>
+        <ul class="list-clean">
+          <li><a href="./gazette.html#decret-armes">Décret royal sur les armoiries historiques</a></li>
+          <li><a href="./gazette.html#cal-protocol">Calendrier protocolaire — Palais de Klow</a></li>
+          <li><a href="./gazette.html#taux-zk">Publication du taux indicatif ZK</a></li>
+        </ul>
+        <a class="btn" style="margin-top:10px" href="./gazette.html">Ouvrir la Gazette</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Premier ministre + ministres -->
+  <section>
+    <div class="container grid2">
+      <div class="card">
+        <span class="tag">Chef du Gouvernement</span>
+        <h3 style="margin:.3rem 0">Premier ministre</h3>
+        <p style="margin:.2rem 0 0 0"><strong>Dr. Miloch Klowitch</strong></p>
+        <p class="muted" style="margin:.2rem 0 0 0">
+          Coordonne l’action gouvernementale, préside le Conseil des ministres, garantit l’exécution des lois et la mise en œuvre du programme.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="tag">Secrétariat général</span>
+        <h3 style="margin:.3rem 0">Chancellerie du Gouvernement</h3>
+        <p class="muted" style="margin:.2rem 0 0 0">
+          Appui juridique et logistique au Conseil, publication des décrets et gestion du Bulletin officiel.
+        </p>
+      </div>
+    </div>
+
+    <div class="container grid3">
+      <div class="card">
+        <h4 style="margin:0">Affaires étrangères</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Diplomatie, représentations, traités et coopération culturelle.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Elena Vargu</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Intérieur</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Identité, registres nationaux, sécurité civile et collectivités.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Goran Szpria</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Finances & Trésor</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Budget de l’État, monnaie ZK et politique économique.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Toma Perovic</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Justice</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Législation, parquet royal, accès au droit et libertés publiques.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Mira Dragas</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Culture & Patrimoine</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Musées, archives, patrimoine héraldique et langue syldave.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Jakob Radu</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Défense</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Forces royales, protection du territoire et protocole d’État.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Ana Kord</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Santé</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Prévention, hôpitaux, médicaments et sécurité sanitaire.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Luka Mavro</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Éducation</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Écoles, universités, recherche et bourses royales.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Ivana Rosc</span></p>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0">Transports & Numérique</h4>
+        <p class="muted" style="margin:.25rem 0 0 0">Infrastructures, poste royale, services en ligne et cybersécurité.</p>
+        <p style="margin:.4rem 0 0 0"><strong>Ministre :</strong> <span class="muted">Peter Valescu</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accès rapides -->
+  <section>
+    <div class="container grid2">
+      <div class="card">
+        <h3 style="margin:0 0 .4rem 0">Services directs</h3>
+        <ul class="list-clean">
+          <li><a href="./id-card.html">Demander/renouveler une carte d’identité</a></li>
+          <li><a href="./verify-id.html">Vérifier une carte (QR/MRZ)</a></li>
+          <li><a href="./naturalisation.html">Demande de naturalisation</a></li>
+          <li><a href="./currency.html">Cours indicatif du ZK</a></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 .4rem 0">Documents utiles</h3>
+        <ul class="list-clean">
+          <li><a href="./gazette.html">Décrets et communiqués — Gazette officielle</a></li>
+          <li><a href="../formulaires/formulaire-syldavie.pdf" download>Formulaire de naturalisation (PDF)</a></li>
+          <li><a href="./contact.html">Contacts des ministères</a> (facultatif si tu crées la page)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div>© Gouvernement du Royaume de Syldavie — 2025 • Site parodique, hommage à Hergé.</div>
+      <div style="display:flex;gap:12px">
+        <a href="./index.html">Accueil</a>
+        <a href="./gazette.html">Gazette</a>
+        <a href="./id-card.html">Carte d’identité</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

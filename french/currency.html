@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cours indicatif de la ZK — Banque Royale de Klow</title>
+<link rel="icon" href="../images/favicon.png">
+<style>
+  :root{
+    --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f7d449; --line:#e6dfd1;
+    --muted:#6b7280; --accent:#223b54; --shadow:0 10px 20px rgba(31,45,58,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,Arial}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{max-width:980px;margin:auto;padding:22px 16px}
+  header{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+  .crest{width:52px;height:52px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;border:1px solid #e5e7eb;
+    box-shadow:var(--shadow);overflow:hidden}
+  .crest img{width:80%;height:80%;object-fit:contain;display:block}
+  h1{margin:0;font-size:22px}
+  .subtitle{color:var(--muted);font-size:13px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;box-shadow:var(--shadow);padding:16px}
+  .card h2{margin:0 0 8px 0;font-size:18px}
+  .rate{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed #e5e7eb}
+  .rate:last-child{border-bottom:0}
+  .big{font-size:22px;font-weight:700}
+  .muted{color:var(--muted)}
+  .row{display:flex;gap:10px;align-items:center;margin-top:8px}
+  input,select{padding:10px;border:1px solid #e5e7eb;border-radius:12px;width:100%}
+  .btn{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+  .foot{margin-top:20px;color:var(--muted);font-size:13px}
+  @media (max-width:800px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="crest"><img src="../images/logo.png" alt=""></div>
+      <div>
+        <h1>Cours indicatif de la ZK</h1>
+        <div class="subtitle">Banque Royale de Klow — taux informatif, non contractuel</div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- Taux -->
+      <section class="card">
+        <h2>Taux du jour</h2>
+        <div class="rate"><span>1 ZK → EUR</span><span class="big" id="zk_eur">…</span></div>
+        <div class="rate"><span>1 ZK → USD</span><span class="big" id="zk_usd">…</span></div>
+        <div class="rate"><span>1 ZK → GBP</span><span class="big" id="zk_gbp">…</span></div>
+        <div class="muted row"><span>Dernière mise à jour :</span><span id="updated">–</span></div>
+      </section>
+
+      <!-- Convertisseur -->
+      <section class="card">
+        <h2>Convertisseur</h2>
+        <div class="row">
+          <input id="amt" type="number" min="0" step="0.01" value="100">
+          <select id="from">
+            <option value="ZK" selected>ZK</option>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+          </select>
+          <span class="muted">→</span>
+          <select id="to">
+            <option value="EUR">EUR</option>
+            <option value="USD" selected>USD</option>
+            <option value="GBP">GBP</option>
+            <option value="ZK">ZK</option>
+          </select>
+        </div>
+        <div class="row">
+          <button class="btn" id="conv">Convertir</button>
+          <div class="big" id="out" style="margin-left:auto">—</div>
+        </div>
+        <p class="muted" style="margin-top:10px">
+          Base indicatrice actuelle : <strong id="base_eur">—</strong> EUR pour 1 ZK.
+        </p>
+      </section>
+    </div>
+
+    <p class="foot">
+      Note : la ZK est une monnaie fictive. Le taux indicatif ZK↔EUR est défini par l’administrateur du site et
+      les autres devises sont calculées via les taux de l’Euro fournis par <a href="https://www.frankfurter.app" target="_blank" rel="noopener">frankfurter.app</a>.
+    </p>
+  </div>
+
+<script>
+/**
+ * ====== PARAMÈTRE À AJUSTER ======
+ * Taux indicatif décidé par la Banque Royale : combien d'EUR vaut 1 ZK.
+ * Ex. 0.24 → 1 ZK = 0.24 EUR
+ */
+const EUR_PER_ZK = 0.24; // <-- modifie ici quand tu annonces un nouveau taux
+
+// ————————————————————————————————————————————
+const els = {
+  zk_eur: document.getElementById('zk_eur'),
+  zk_usd: document.getElementById('zk_usd'),
+  zk_gbp: document.getElementById('zk_gbp'),
+  updated: document.getElementById('updated'),
+  base_eur: document.getElementById('base_eur'),
+  amt: document.getElementById('amt'),
+  from: document.getElementById('from'),
+  to: document.getElementById('to'),
+  out: document.getElementById('out'),
+  conv: document.getElementById('conv')
+};
+
+els.base_eur.textContent = EUR_PER_ZK.toFixed(4);
+
+// taux courants (en EUR base)
+const state = { usdPerEur: null, gbpPerEur: null };
+
+async function loadFx(){
+  try{
+    const r = await fetch('https://api.frankfurter.app/latest?from=EUR&to=USD,GBP');
+    const j = await r.json();
+    state.usdPerEur = j.rates.USD; // combien 1 EUR vaut en USD
+    state.gbpPerEur = j.rates.GBP;
+    els.updated.textContent = new Date(j.date+'T12:00:00Z').toLocaleDateString('fr-FR');
+  }catch(e){
+    // fallback si API indisponible
+    state.usdPerEur = 1.10;
+    state.gbpPerEur = 0.85;
+    els.updated.textContent = 'Hors ligne';
+  }
+  renderRates();
+}
+
+function renderRates(){
+  const zk_eur = EUR_PER_ZK;
+  const zk_usd = EUR_PER_ZK * state.usdPerEur;
+  const zk_gbp = EUR_PER_ZK * state.gbpPerEur;
+  els.zk_eur.textContent = zk_eur.toFixed(4) + ' €';
+  els.zk_usd.textContent = zk_usd.toFixed(4) + ' $';
+  els.zk_gbp.textContent = zk_gbp.toFixed(4) + ' £';
+}
+
+function convert(){
+  const amt = parseFloat(els.amt.value||'0');
+  if(!amt || !isFinite(amt)){ els.out.textContent='—'; return; }
+
+  // Nous connaissons : 1 ZK = EUR_PER_ZK EUR
+  // Et 1 EUR = state.usdPerEur USD, 1 EUR = state.gbpPerEur GBP
+  const toEUR = (code,val)=>{
+    switch(code){
+      case 'ZK':  return val * EUR_PER_ZK;
+      case 'EUR': return val;
+      case 'USD': return val / state.usdPerEur;
+      case 'GBP': return val / state.gbpPerEur;
+    }
+  };
+  const fromEUR = (code,eur)=>{
+    switch(code){
+      case 'ZK':  return eur / EUR_PER_ZK;
+      case 'EUR': return eur;
+      case 'USD': return eur * state.usdPerEur;
+      case 'GBP': return eur * state.gbpPerEur;
+    }
+  };
+
+  const eur = toEUR(els.from.value, amt);
+  const outVal = fromEUR(els.to.value, eur);
+  const sym = {EUR:'€', USD:'$', GBP:'£', ZK:'ZK'}[els.to.value];
+  els.out.textContent = outVal.toFixed(2) + ' ' + sym;
+}
+
+els.conv.addEventListener('click', convert);
+
+loadFx();
+</script>
+</body>
+</html>

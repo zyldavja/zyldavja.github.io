@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gazette officielle — Royaume de Syldavie</title>
+<meta name="description" content="Gazette officielle du Royaume de Syldavie : décrets royaux, arrêtés ministériels, communiqués.">
+<link rel="icon" href="../images/favicon.png">
+
+<style>
+  :root{
+    --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f7d449; --line:#e6dfd1;
+    --muted:#6b7280; --accent:#223b54; --shadow:0 10px 20px rgba(31,45,58,.08);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,Segoe UI,Roboto,Arial}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1100px;margin:auto;padding:22px 16px}
+
+  /* Header */
+  header{display:flex;align-items:center;gap:14px;margin:6px 0 10px}
+  .crest{width:52px;height:52px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;border:1px solid #e5e7eb;
+    box-shadow:var(--shadow);overflow:hidden}
+  .crest img{width:80%;height:80%;object-fit:contain;display:block}
+  h1{margin:0;font-size:24px}
+  .subtitle{color:var(--muted);font-size:13px}
+
+  /* Hero band */
+  .hero{margin-top:14px;background:#fff;border:1px solid #e5e7eb;border-radius:18px;
+    box-shadow:var(--shadow);padding:18px}
+  .hero p{margin:.2rem 0 0 0;color:var(--muted)}
+
+  /* Toolbar */
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+  .input,.select{
+    background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:10px 12px;
+    display:flex;align-items:center;gap:8px
+  }
+  .input input{border:0;outline:0;font:inherit;min-width:240px}
+  .select select{border:0;outline:0;font:inherit;background:#fff}
+  .btn{background:var(--accent);color:#fff;border:0;border-radius:12px;padding:10px 14px;cursor:pointer}
+  .btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
+
+  /* List */
+  .list{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;box-shadow:var(--shadow);padding:14px}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .badge{background:#f1f5f9;border:1px solid #e5e7eb;border-radius:999px;padding:2px 8px}
+  .title{margin:.35rem 0 .35rem 0;font-size:18px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  details{margin-top:6px}
+  details summary{cursor:pointer;color:var(--accent)}
+  .empty{padding:30px;text-align:center;color:var(--muted);border:1px dashed #e5e7eb;border-radius:12px;background:#fff}
+
+  footer{margin:22px 0 8px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:10px}
+  @media (max-width:900px){.list{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="crest"><img src="../images/logo.png" alt=""></div>
+      <div>
+        <h1>Gazette officielle du Royaume de Syldavie</h1>
+        <div class="subtitle">Décrets royaux, arrêtés ministériels et communiqués officiels</div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <strong>Publication</strong>
+      <p>Les textes publiés ci‑dessous sont informatifs. La version PDF scellée fait foi.</p>
+    </section>
+
+    <!-- Filtres -->
+    <div class="toolbar">
+      <div class="input" title="Rechercher par mots-clés">
+        🔎 <input id="q" type="search" placeholder="Rechercher un texte (mots du titre ou du résumé)…">
+      </div>
+      <div class="select">
+        📅
+        <select id="year">
+          <option value="all">Toutes années</option>
+          <option>2025</option><option>2024</option><option>2023</option>
+        </select>
+      </div>
+      <div class="select">
+        📂
+        <select id="kind">
+          <option value="all">Tous types</option>
+          <option value="decret">Décret</option>
+          <option value="arrete">Arrêté</option>
+          <option value="communique">Communiqué</option>
+        </select>
+      </div>
+      <button class="btn" id="reset">Réinitialiser</button>
+      <a class="btn ghost" href="#" id="rss" aria-label="Flux RSS">RSS</a>
+    </div>
+
+    <!-- Liste -->
+    <div id="results" class="list"></div>
+    <div id="empty" class="empty" hidden>Aucun résultat pour ces filtres.</div>
+
+    <footer>
+      © Gouvernement du Royaume de Syldavie — 2025 • Gazette non officielle (projet parodique).
+    </footer>
+  </div>
+
+<script>
+/** Données de démonstration : ajoute/enlève des objets ici.
+ *  number: identifiant officiel, type: decret/arrete/communique
+ *  pdf: met le chemin vers ton PDF si tu en as un (ex: ../gazette/2025-07-01-001.pdf)
+ */
+const ITEMS = [
+  {
+    date: "2025-08-10",
+    year: 2025,
+    number: "DR-2025/041",
+    type: "decret",
+    title: "Décret royal sur la protection des armoiries historiques",
+    intro: "Renforcement de la conservation des emblèmes et drapeaux du Royaume.",
+    body: "Le présent décret précise le statut patrimonial des armoiries, encadre leur reproduction publique et désigne le Musée de Klow comme autorité de référence.",
+    pdf: "#"
+  },
+  {
+    date: "2025-08-05",
+    year: 2025,
+    number: "AM-INT-2025/012",
+    type: "arrete",
+    title: "Arrêté du ministre de l’Intérieur relatif au registre national",
+    intro: "Mise à jour des formats et mécanismes de contrôle du numéro national syldave.",
+    body: "L’arrêté introduit un format modernisé incluant un bloc « SYL » central et un contrôle algorithmique. Entrée en vigueur au 1er septembre 2025.",
+    pdf: "#"
+  },
+  {
+    date: "2025-07-20",
+    year: 2025,
+    number: "COM-MFA-2025/022",
+    type: "communique",
+    title: "Communiqué — échanges culturels européens",
+    intro: "Annonce d’un programme d’échanges artistiques avec plusieurs capitales européennes.",
+    body: "Le programme vise des résidences croisées, la circulation d’expositions et des concerts communs. Les institutions intéressées peuvent contacter le ministère.",
+    pdf: "#"
+  }
+];
+
+// rendu
+const results = document.getElementById('results');
+const emptyEl = document.getElementById('empty');
+const q = document.getElementById('q');
+const year = document.getElementById('year');
+const kind = document.getElementById('kind');
+const reset = document.getElementById('reset');
+
+function badgeLabel(t){
+  return t==="decret"?"Décret":t==="arrete"?"Arrêté":"Communiqué";
+}
+function fmtDate(iso){
+  return new Date(iso+"T12:00:00Z").toLocaleDateString('fr-FR',{year:"numeric",month:"long",day:"2-digit"});
+}
+
+function render(){
+  const query = (q.value||"").toLowerCase().trim();
+  const ky = kind.value, yr = year.value;
+
+  const filtered = ITEMS.filter(it=>{
+    const okKind = ky==="all" || it.type===ky;
+    const okYear = yr==="all" || String(it.year)===yr;
+    const text = (it.title+" "+it.intro+" "+it.number).toLowerCase();
+    const okQuery = !query || text.includes(query);
+    return okKind && okYear && okQuery;
+  });
+
+  results.innerHTML = "";
+  filtered.forEach(it=>{
+    const el = document.createElement('article');
+    el.className = "card";
+    el.innerHTML = `
+      <div class="meta">
+        <span class="badge">${badgeLabel(it.type)}</span>
+        <span>n° <strong>${it.number}</strong></span>
+        <span>— ${fmtDate(it.date)}</span>
+      </div>
+      <h3 class="title">${it.title}</h3>
+      <p class="muted">${it.intro}</p>
+      <details>
+        <summary>Lire le texte</summary>
+        <p>${it.body}</p>
+      </details>
+      <div class="actions">
+        <a class="btn" href="${it.pdf}">Télécharger le PDF</a>
+        <a class="btn ghost" href="#">Partager</a>
+      </div>
+    `;
+    results.appendChild(el);
+  });
+
+  emptyEl.hidden = filtered.length>0;
+}
+
+[q,year,kind].forEach(el=>el.addEventListener('input', render));
+reset.addEventListener('click', ()=>{
+  q.value=""; year.value="all"; kind.value="all"; render();
+});
+
+// peupler la liste des années en fonction des données
+(function fillYears(){
+  const years = Array.from(new Set(ITEMS.map(i=>i.year))).sort((a,b)=>b-a);
+  const select = document.getElementById('year');
+  // garde "Toutes années", ajoute le reste s'ils n'y sont pas
+  years.forEach(y=>{
+    if (![...select.options].some(o=>o.value==y)) {
+      const o = document.createElement('option'); o.value=o.textContent=y; select.appendChild(o);
+    }
+  });
+})();
+
+render();
+</script>
+</body>
+</html>
