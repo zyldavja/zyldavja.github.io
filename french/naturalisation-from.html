@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulaire en ligne – Naturalisation</title>
+  <meta name="color-scheme" content="light only" />
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
+  <style>
+    :root{--ink:#1f2d3a;--paper:#f7f3ea;--card:#fff;--gold:#f7d449;--line:#e6dfd1;--muted:#6b7280;--accent:#223b54;--shadow:0 10px 20px rgba(31,45,58,.08)}
+    *{box-sizing:border-box} html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:var(--accent)} .container{max-width:920px;margin:auto;padding:0 16px}
+    header{padding:22px 0} .head{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:14px;align-items:center}
+    .crest{width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;border:1px solid #e5e7eb;box-shadow:var(--shadow);overflow:hidden}
+    .crest img{width:80%;height:80%;object-fit:contain;display:block}
+    h1{margin:0;font-size:22px} .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;box-shadow:var(--shadow);padding:18px}
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px} form .row-3{grid-template-columns:1fr 1fr 1fr}
+    label{font-weight:600;display:block;margin-top:10px}
+    input,select,textarea{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
+    textarea{min-height:120px;resize:vertical}
+    .help{font-size:12px;color:var(--muted)}
+    .actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:10px 14px;cursor:pointer}
+    .btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
+    footer{padding:28px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted);margin-top:28px}
+    @media(max-width:840px){form .row,form .row-3{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="container head">
+    <div class="brand">
+      <div class="crest"><img src="../images/logo.png" alt="Blason de Syldavie"></div>
+      <div>
+        <h1>Formulaire de demande de naturalisation</h1>
+        <div class="subtitle">Portail du Gouvernement du Royaume de Syldavie</div>
+      </div>
+    </div>
+    <nav><a href="naturalisation.html">← Retour</a></nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <!--
+        NOTE: site statique. Envoi via mailto (ouvre le client e‑mail de l’utilisateur).
+        Si tu veux une vraie soumission serveur, utilise un service type Formspree / Netlify Forms.
+      -->
+      <form action="mailto:naturalisation@syldavia.eu?subject=Demande%20de%20naturalisation%20(en%20ligne)" method="post" enctype="text/plain">
+        <h2 style="margin:0 0 10px 0">1) Identité</h2>
+        <div class="row">
+          <div>
+            <label for="nom">Nom</label>
+            <input id="nom" name="Nom" required />
+          </div>
+          <div>
+            <label for="prenoms">Prénom(s)</label>
+            <input id="prenoms" name="Prenoms" required />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="naissance-date">Date de naissance</label>
+            <input id="naissance-date" name="Date_naissance" type="date" required />
+          </div>
+          <div>
+            <label for="naissance-lieu">Lieu de naissance (ville, pays)</label>
+            <input id="naissance-lieu" name="Lieu_naissance" required />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="sexe">Sexe</label>
+            <select id="sexe" name="Sexe" required>
+              <option value="">— Sélectionner —</option>
+              <option>F</option><option>M</option><option>X</option>
+            </select>
+          </div>
+          <div>
+            <label for="nationalite-actuelle">Nationalité actuelle</label>
+            <input id="nationalite-actuelle" name="Nationalite_actuelle" required />
+          </div>
+        </div>
+
+        <h2 style="margin:16px 0 10px 0">2) Coordonnées</h2>
+        <label for="adresse">Adresse complète</label>
+        <input id="adresse" name="Adresse" placeholder="Rue, N°, complément, code postal, ville, pays" required />
+        <div class="row">
+          <div>
+            <label for="telephone">Téléphone</label>
+            <input id="telephone" name="Telephone" type="tel" />
+          </div>
+          <div>
+            <label for="email">E‑mail</label>
+            <input id="email" name="Email" type="email" required />
+          </div>
+        </div>
+
+        <h2 style="margin:16px 0 10px 0">3) Situation familiale</h2>
+        <div class="row">
+          <div>
+            <label for="etat-civil">État civil</label>
+            <select id="etat-civil" name="Etat_civil" required>
+              <option value="">— Sélectionner —</option>
+              <option>Célibataire</option><option>Marié(e)</option>
+              <option>Union enregistrée</option><option>Divorcé(e)</option><option>Veuf(ve)</option>
+            </select>
+          </div>
+          <div>
+            <label for="enfants">Nombre d’enfants</label>
+            <input id="enfants" name="Enfants" type="number" min="0" value="0" />
+          </div>
+        </div>
+
+        <h2 style="margin:16px 0 10px 0">4) Liens avec des citoyens syldaves</h2>
+        <p class="help">La demande peut être facilitée si vous avez de la famille syldave. Indiquez leur identité et numéro national syldave.</p>
+        <label for="liens-syldaves">Membres de la famille syldave (noms, lien, N° national)</label>
+        <textarea id="liens-syldaves" name="Liens_syldaves" placeholder="Ex. Ivan K., grand‑père – N° SYL‑1990‑001234"></textarea>
+
+        <label for="bordure" style="margin-top:12px">Avez‑vous actuellement, ou par le passé, détenu la nationalité bordure, ou un membre de votre famille proche en est‑il titulaire ?</label>
+        <select id="bordure" name="Lien_nationalite_bordure" required>
+          <option value="">— Choisir —</option>
+          <option>Oui</option><option>Non</option>
+        </select>
+
+        <h2 style="margin:16px 0 10px 0">5) Séjour et motif</h2>
+        <div class="row">
+          <div>
+            <label for="sejour">Séjour en Syldavie (dates, villes)</label>
+            <input id="sejour" name="Sejour_Syldavie" placeholder="Ex. 2023-06→2023-09, Klow" />
+          </div>
+          <div>
+            <label for="langues">Langues parlées</label>
+            <input id="langues" name="Langues" placeholder="Ex. français, anglais, syldave (notions)" />
+          </div>
+        </div>
+        <label for="motif" style="margin-top:10px">Motif de la demande</label>
+        <textarea id="motif" name="Motif" required></textarea>
+
+        <h2 style="margin:16px 0 10px 0">6) Déclarations</h2>
+        <label><input type="checkbox" required name="Declaration_exactitude" value="oui" /> Je déclare sur l’honneur que les informations fournies sont exactes.</label>
+        <label><input type="checkbox" required name="Consentement_contact" value="oui" /> J’accepte d’être contacté(e) par l’administration au sujet de cette demande.</label>
+        <p class="help">Après envoi, un brouillon d’e‑mail s’ouvrira. Joignez vos pièces scannées (identité, état civil, preuves de liens familiaux, etc.) puis envoyez.</p>
+
+        <div class="actions">
+          <button class="btn" type="submit">Envoyer la demande</button>
+          <button class="btn ghost" type="reset">Effacer</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container">© Gouvernement du Royaume de Syldavie — 2025 • Site parodique, hommage à Hergé.</footer>
+</body>
+</html>

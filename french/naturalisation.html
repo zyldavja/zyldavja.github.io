@@ -1,253 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naturalisation - Royaume de Syldavie</title>
-  <link rel="icon" type="image/png" href="../images/favicon.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naturalisation – Gouvernement du Royaume de Syldavie</title>
+  <meta name="color-scheme" content="light only" />
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
   <style>
-    :root{
-      --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f7d449; --line:#e6dfd1;
-      --muted:#6b7280; --accent:#223b54; --shadow:0 10px 20px rgba(31,45,58,.08);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",Arial,"Helvetica Neue",sans-serif}
+    :root{--ink:#1f2d3a;--paper:#f7f3ea;--card:#fff;--gold:#f7d449;--line:#e6dfd1;--muted:#6b7280;--accent:#223b54;--shadow:0 10px 20px rgba(31,45,58,.08)}
+    *{box-sizing:border-box} html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
     a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:1100px;margin:auto;padding:24px 16px}
-    header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+    .container{max-width:980px;margin:auto;padding:0 16px}
+    header{padding:22px 0}
+    .head{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:14px;align-items:center}
     .crest{width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;border:1px solid #e5e7eb;box-shadow:var(--shadow);overflow:hidden}
     .crest img{width:80%;height:80%;object-fit:contain;display:block}
-    h1{margin:0;font-size:24px}
-    .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:18px}
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-    .muted{color:var(--muted)}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .btn{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:10px 14px;cursor:pointer}
+    h1{margin:0;font-size:22px} .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;box-shadow:var(--shadow);padding:18px}
+    .lead{color:#374151;margin-top:6px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .btn{display:inline-block;background:var(--accent);color:#fff;border-radius:14px;padding:10px 14px}
     .btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
-    hr{border:0;border-top:1px solid var(--line);margin:16px 0}
-    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    form label{display:block;font-weight:600;margin-top:10px}
-    form input, form select, form textarea{
-      width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff
-    }
-    .small{font-size:13px;color:var(--muted)}
-    .checkrow{display:flex;gap:14px;flex-wrap:wrap}
-    .hint{background:#fff8;border:1px dashed #e0cf82;padding:10px;border-radius:10px}
-    @media (max-width:900px){ .grid{grid-template-columns:1fr} }
+    ul{margin:0 0 0 18px}
+    footer{padding:28px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted);margin-top:28px}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="crest"><img src="../images/logo.png" alt="Blason de la Syldavie"></div>
+  <header class="container head">
+    <div class="brand">
+      <div class="crest"><img src="../images/logo.png" alt="Blason de Syldavie"></div>
       <div>
-        <h1>Demande de naturalisation</h1>
-        <div class="muted">Royaume de Syldavie — Portail officiel (parodique)</div>
+        <h1>Naturalisation</h1>
+        <div class="subtitle">Portail du Gouvernement du Royaume de Syldavie</div>
       </div>
-    </header>
-
-    <div class="grid">
-      <!-- Colonne gauche : Infos + PDF -->
-      <section class="card">
-        <h2 style="margin-top:0">Deux façons de déposer votre demande</h2>
-        <ol>
-          <li><strong>Par PDF</strong> — Téléchargez le formulaire, remplissez‑le et envoyez‑le par e‑mail :
-            <div class="cta">
-              <a class="btn" href="../formulaire-syldavie.pdf" download>Télécharger le PDF</a>
-              <a class="btn ghost" href="mailto:naturalisation@syldavia.eu?subject=Demande%20de%20naturalisation">Envoyer le PDF par e‑mail</a>
-            </div>
-          </li>
-          <li style="margin-top:8px"><strong>En ligne</strong> — Remplissez le formulaire ci‑contre et soumettez‑le directement.</li>
-        </ol>
-
-        <hr>
-
-        <p class="hint">
-          <strong>Important :</strong> la demande peut être facilitée si vous avez de la <strong>famille syldave</strong>.
-          Si c’est votre cas, veuillez l’indiquer dans le formulaire en ligne et renseigner leur <strong>numéro national syldave</strong>.
-        </p>
-
-        <p class="small">Besoin d’aide ? Écrivez‑nous : <a href="mailto:naturalisation@syldavia.eu">naturalisation@syldavia.eu</a></p>
-      </section>
-
-      <!-- Colonne droite : Formulaire en ligne -->
-      <section class="card">
-        <h2 style="margin-top:0">Formulaire en ligne</h2>
-        <form id="natForm" action="#" method="post" novalidate>
-          <!-- CHOIX DE PROCÉDURE -->
-          <label>Choix de la procédure :</label>
-          <div class="checkrow">
-            <label><input type="radio" name="procedure" value="naturalisation" required> Naturalisation</label>
-            <label><input type="radio" name="procedure" value="reintegration"> Réintégration</label>
-          </div>
-
-          <label style="margin-top:8px">Souhaitez‑vous obtenir la <em>forme syldave</em> de vos nom et prénoms ?</label>
-          <div class="checkrow">
-            <label><input type="radio" name="syldave_form" value="oui" required> Oui</label>
-            <label><input type="radio" name="syldave_form" value="non"> Non</label>
-          </div>
-
-          <hr>
-
-          <!-- COORDONNÉES -->
-          <h3>Coordonnées du demandeur</h3>
-          <label for="adresse">Adresse actuelle</label>
-          <input id="adresse" name="adresse" type="text" required>
-          <div class="row">
-            <div>
-              <label for="batiment">Bâtiment</label>
-              <input id="batiment" name="batiment" type="text">
-            </div>
-            <div>
-              <label for="escalier">Escalier</label>
-              <input id="escalier" name="escalier" type="text">
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <label for="etage">Étage</label>
-              <input id="etage" name="etage" type="text">
-            </div>
-            <div>
-              <label for="ville">Ville</label>
-              <input id="ville" name="ville" type="text" required>
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <label for="cp">Code postal</label>
-              <input id="cp" name="cp" type="text" required>
-            </div>
-            <div>
-              <label for="pays">Pays</label>
-              <input id="pays" name="pays" type="text" required>
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <label for="tel">Téléphone</label>
-              <input id="tel" name="tel" type="tel" required>
-            </div>
-            <div>
-              <label for="email">E‑mail</label>
-              <input id="email" name="email" type="email" required>
-            </div>
-          </div>
-
-          <hr>
-
-          <!-- ÉTAT CIVIL -->
-          <h3>État civil et situation familiale</h3>
-          <div class="row">
-            <div>
-              <label for="nom_naissance">Nom de naissance</label>
-              <input id="nom_naissance" name="nom_naissance" type="text" required>
-            </div>
-            <div>
-              <label for="prenoms">Prénom(s)</label>
-              <input id="prenoms" name="prenoms" type="text" required>
-            </div>
-          </div>
-
-          <label>Genre :</label>
-          <div class="checkrow">
-            <label><input type="radio" name="genre" value="F" required> Femme</label>
-            <label><input type="radio" name="genre" value="M"> Homme</label>
-            <label><input type="radio" name="genre" value="X"> Autre</label>
-          </div>
-
-          <div class="row">
-            <div>
-              <label for="nationalite">Nationalité</label>
-              <input id="nationalite" name="nationalite" type="text" required>
-            </div>
-            <div>
-              <label for="naissance">Date de naissance</label>
-              <input id="naissance" name="naissance" type="date" required>
-            </div>
-          </div>
-
-          <div class="row">
-            <div>
-              <label for="lieu_ville">Lieu de naissance — Ville</label>
-              <input id="lieu_ville" name="lieu_ville" type="text" required>
-            </div>
-            <div>
-              <label for="lieu_pays">Pays</label>
-              <input id="lieu_pays" name="lieu_pays" type="text" required>
-            </div>
-          </div>
-
-          <label>Situation familiale :</label>
-          <div class="checkrow">
-            <label><input type="checkbox" name="situation" value="celibataire"> Célibataire</label>
-            <label><input type="checkbox" name="situation" value="marie"> Marié(e)</label>
-            <label><input type="checkbox" name="situation" value="divorce"> Divorcé(e)</label>
-            <label><input type="checkbox" name="situation" value="veuf"> Veuf(ve)</label>
-            <label><input type="checkbox" name="situation" value="pacs"> Pacte civil de solidarité</label>
-            <label><input type="checkbox" name="situation" value="sep_defacto"> Séparé(e) de fait</label>
-            <label><input type="checkbox" name="situation" value="sep_legale"> Séparé(e) légalement</label>
-          </div>
-
-          <hr>
-
-          <!-- FAMILLE SYLDAVE -->
-          <h3>Famille syldave (facilitateur)</h3>
-          <p class="small">Indiquez ici les membres de votre famille syldave (le cas échéant) et leur numéro national syldave.</p>
-          <div id="familleList">
-            <div class="row">
-              <div>
-                <label>Nom et prénom du parent</label>
-                <input type="text" name="parent_nom[]" placeholder="Ex. Ivan SYLDAV">
-              </div>
-              <div>
-                <label>Numéro national syldave</label>
-                <input type="text" name="parent_nrn[]" placeholder="Ex. 95022899874">
-              </div>
-            </div>
-          </div>
-          <button type="button" class="btn ghost" id="addParent">Ajouter un autre parent</button>
-
-          <hr>
-
-          <div class="checkrow">
-            <button type="submit" class="btn">Soumettre la demande en ligne</button>
-            <a class="btn ghost" href="../formulaire-syldavie.pdf" download>Ou télécharger le PDF</a>
-          </div>
-
-          <p class="small" style="margin-top:8px">
-            En soumettant ce formulaire, vous consentez au traitement de vos données aux seules fins de l’instruction de votre demande.
-          </p>
-        </form>
-      </section>
     </div>
-  </div>
+    <nav><a href="../index.html">← Retour accueil</a></nav>
+  </header>
 
-  <script>
-    // Ajouter dynamiquement des blocs "parent syldave"
-    document.getElementById('addParent').addEventListener('click', () => {
-      const wrap = document.getElementById('familleList');
-      const div = document.createElement('div');
-      div.className = 'row';
-      div.innerHTML = `
-        <div>
-          <label>Nom et prénom du parent</label>
-          <input type="text" name="parent_nom[]" placeholder="Ex. Ivan SYLDAV">
-        </div>
-        <div>
-          <label>Numéro national syldave</label>
-          <input type="text" name="parent_nrn[]" placeholder="Ex. 95022899874">
-        </div>`;
-      wrap.appendChild(div);
-    });
+  <main class="container">
+    <section class="card">
+      <h2 style="margin:0 0 6px 0">Deux manières de déposer votre demande</h2>
+      <p class="lead">
+        La demande peut être <strong>facilitée si vous avez de la famille syldave</strong> (parents, grands‑parents ou fratrie).
+        Merci d’indiquer leur identité et leur <strong>numéro national syldave</strong> dans votre dossier.
+      </p>
 
-    // (Optionnel) Intercepter la soumission pour un message de confirmation
-    document.getElementById('natForm').addEventListener('submit', (e)=>{
-      e.preventDefault();
-      alert("Votre demande en ligne a bien été enregistrée. Vous recevrez un accusé par e‑mail.");
-      e.target.reset();
-      window.scrollTo({top:0, behavior:"smooth"});
-    });
-  </script>
+      <div class="grid">
+        <article class="card">
+          <h3 style="margin-top:0">Option A — Formulaire PDF</h3>
+          <p>Téléchargez le document officiel, remplissez‑le et envoyez‑le par e‑mail avec vos justificatifs.</p>
+          <p style="margin:.6rem 0 1rem 0">
+            <a class="btn" href="../formulaire-syldavie.pdf" download>📄 Télécharger “formulaire-syldavie.pdf”</a>
+          </p>
+          <p>Adresse d’envoi : <a href="mailto:naturalisation@syldavia.eu">naturalisation@syldavia.eu</a></p>
+          <ul>
+            <li>Objet de l’e‑mail : <em>Demande de naturalisation – [Nom Prénom]</em></li>
+            <li>Joindre pièces : identité, état civil, preuves de liens familiaux syldaves (si applicables), justificatifs de résidence, etc.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3 style="margin-top:0">Option B — Formulaire en ligne</h3>
+          <p>Remplissez le formulaire directement sur notre portail. Vous pourrez joindre vos pièces en réponse au courriel de confirmation.</p>
+          <p style="margin:.6rem 0 1rem 0">
+            <a class="btn" href="naturalisation-form.html">Remplir le formulaire en ligne</a>
+          </p>
+          <p class="subtitle">Temps estimé : 8–10 minutes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h3 style="margin-top:0">Informations utiles</h3>
+      <ul>
+        <li>Le traitement d’un dossier incomplet peut être retardé.</li>
+        <li>Les déclarations inexactes peuvent entraîner un refus.</li>
+        <li>Vous recevrez un numéro de dossier et des instructions complémentaires par e‑mail.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="container">© Gouvernement du Royaume de Syldavie — 2025 • Site parodique, hommage à Hergé.</footer>
 </body>
 </html>
