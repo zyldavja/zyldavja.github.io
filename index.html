@@ -3,83 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="siteTitle">Gouvernement du Royaume de Syldavie</title>
+    <title>Gouvernement du Royaume de Syldavie</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header>
-    <h1 id="siteTitle">Gouvernement du Royaume de Syldavie</h1>
-    <p id="siteSubtitle">Краљевина Зылдавыa — Portail de l'État</p>
-    <div class="langs">
-        <button id="lang-syl">Syldave</button>
-        <button id="lang-fr" aria-pressed="true">Français</button>
-        <button id="lang-en">English</button>
-    </div>
-</header>
-
-<main>
-    <section class="hero">
-        <h2 id="heroTitle">Communiqué officiel</h2>
-        <p id="heroLead">
-            Bienvenue sur le portail conjoint Monarchie & Gouvernement du Royaume de Syldavie.
-        </p>
-    </section>
-
-    <section class="cta">
-        <button id="ctaCitizenship">Démarches citoyennes</button>
-        <button id="ctaGazette">Gazette officielle</button>
-        <button id="ctaGovernment">Le Gouvernement</button>
-    </section>
-
-    <section>
-        <h3 id="royalLabel">Maison royale</h3>
-        <h4 id="royalTitle">Message de Sa Majesté</h4>
-        <a href="#" id="royalLink">Lire le message</a>
-    </section>
-
-    <section>
-        <h3 id="govNewsTitle">Actualités du Gouvernement</h3>
-        <h3 id="royalNewsTitle">Bulletins de la Maison Royale</h3>
-    </section>
-
-    <section>
-        <h3 id="servicesTitle">Services aux citoyens</h3>
-        <div class="card">
-            <h4 id="cardIDTitle">Carte d’identité</h4>
-            <p id="cardIDDesc">Demander ou renouveler une carte nationale.</p>
-            <button id="cardIDCTA">Demander</button>
+    <header>
+        <div class="top-banner">
+            Portail institutionnel fictif — hommage à Hergé. « Eih bennek, eih blavek ».
         </div>
-        <div class="card">
-            <h4 id="naturalTitle">Naturalisation</h4>
-            <p id="naturalDesc">Accéder au formulaire officiel.</p>
-            <button id="naturalCTA">Remplir le formulaire</button>
+        <div class="header-content">
+            <h1 id="site-title">Gouvernement du Royaume de Syldavie</h1>
+            <p id="site-subtitle">Кралевина Зылдавыа — Government of the Kingdom of Syldavia</p>
+            <div class="lang-buttons">
+                <button onclick="setLanguage('syld')">Сылдавянски</button>
+                <button onclick="setLanguage('fr')">Français</button>
+                <button onclick="setLanguage('en')">English</button>
+            </div>
         </div>
-        <div class="card">
-            <h4 id="gazetteTitle">Gazette officielle</h4>
-            <p id="gazetteDesc">Lire les décrets et communiqués.</p>
-            <button id="gazetteCTA">Accéder</button>
-        </div>
-    </section>
+    </header>
 
-    <section>
-        <h3 id="govTitle">Composition du Gouvernement</h3>
-        <ul>
-            <li id="erikaRole">Directrice générale de l’Office national de la citoyenneté</li>
-            <li id="fatherRole">Ministre des Affaires étrangères</li>
-        </ul>
-    </section>
-</main>
+    <main>
+        <!-- Bloc principal -->
+        <section class="main-box">
+            <div class="main-left">
+                <h2 id="main-title">Комюнике официял</h2>
+                <p id="main-text">Добро пожаловать на совместный портал Монархии и Правительства Зылдавыа. Здесь вы найдете официальные объявления, услуги для граждан и тексты на трёх языках.</p>
+                <div class="buttons">
+                    <a href="#" id="btn-citizens" class="btn">Démarches citoyennes</a>
+                    <a href="#" id="btn-gazette" class="btn yellow">Gazette officielle</a>
+                    <a href="#" id="btn-gov" class="btn">Le Gouvernement</a>
+                </div>
+            </div>
+            <div class="main-right">
+                <h3 id="royal-title">Maison Royale</h3>
+                <p id="royal-message">Message de Sa Majesté : « Au service du peuple syldave. »</p>
+                <a href="#" id="royal-read" class="btn">Lire le message</a>
+            </div>
+        </section>
 
-<footer>
-    <p id="footerNote">© Gouvernement du Royaume de Syldavie — 2025</p>
-    <div class="langs">
-        <a href="#" id="footSyl">Syldave</a> |
-        <a href="#" id="footFr">Français</a> |
-        <a href="#" id="footEn">English</a>
-    </div>
-</footer>
+        <!-- Actualités -->
+        <section class="news">
+            <div>
+                <h3 id="news-title">Actualités du Gouvernement</h3>
+                <ul id="news-list">
+                    <li>Ouverture du portail de naturalisation – Office national de la citoyenneté.</li>
+                    <li>Publication d’un taux indicatif ZK – Banque Royale de Klow.</li>
+                    <li>Communiqué des Affaires étrangères – échanges culturels européens.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 id="royal-bulletins-title">Bulletins de la Maison Royale</h3>
+                <ul id="royal-bulletins-list">
+                    <li>Audience hebdomadaire au Palais de Klow — calendrier protocolaire.</li>
+                    <li>Décret royal sur la préservation des armoiries historiques.</li>
+                    <li>Édition commémorative des timbres « Eih bennek, eih blavek ».</li>
+                </ul>
+            </div>
+        </section>
 
-<script src="script.js"></script>
+        <!-- Services -->
+        <section class="services">
+            <div class="service">
+                <h4 id="id-card-title">Carte d’identité</h4>
+                <p id="id-card-text">Demander ou renouveler une carte nationale (format CR80).</p>
+                <a href="#" id="id-card-btn" class="btn">Demander</a>
+            </div>
+            <div class="service">
+                <h4 id="naturalisation-title">Naturalisation</h4>
+                <p id="naturalisation-text">Accéder au formulaire officiel du Royaume (PDF + en ligne).</p>
+                <a href="#" id="naturalisation-btn" class="btn">Remplir le formulaire</a>
+            </div>
+            <div class="service">
+                <h4 id="gazette-title">Gazette officielle</h4>
+                <p id="gazette-text">Lire les décrets et communiqués ministériels et royaux.</p>
+                <a href="#" id="gazette-btn" class="btn">Accéder</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const translations = {
+            fr: {
+                "site-title": "Gouvernement du Royaume de Syldavie",
+                "site-subtitle": "Кралевина Зылдавыа — Government of the Kingdom of Syldavia",
+                "main-title": "Communiqué officiel",
+                "main-text": "Bienvenue sur le portail commun de la Monarchie et du Gouvernement de Syldavie. Vous trouverez ici les annonces officielles, les services aux citoyens et des textes en trois langues.",
+                "btn-citizens": "Démarches citoyennes",
+                "btn-gazette": "Gazette officielle",
+                "btn-gov": "Le Gouvernement",
+                "royal-title": "Maison Royale",
+                "royal-message": "Message de Sa Majesté : « Au service du peuple syldave. »",
+                "royal-read": "Lire le message",
+                "news-title": "Actualités du Gouvernement",
+                "news-list": [
+                    "Ouverture du portail de naturalisation – Office national de la citoyenneté.",
+                    "Publication d’un taux indicatif ZK – Banque Royale de Klow.",
+                    "Communiqué des Affaires étrangères – échanges culturels européens."
+                ],
+                "royal-bulletins-title": "Bulletins de la Maison Royale",
+                "royal-bulletins-list": [
+                    "Audience hebdomadaire au Palais de Klow — calendrier protocolaire.",
+                    "Décret royal sur la préservation des armoiries historiques.",
+                    "Édition commémorative des timbres « Eih bennek, eih blavek »."
+                ],
+                "id-card-title": "Carte d’identité",
+                "id-card-text": "Demander ou renouveler une carte nationale (format CR80).",
+                "id-card-btn": "Demander",
+                "naturalisation-title": "Naturalisation",
+                "naturalisation-text": "Accéder au formulaire officiel du Royaume (PDF + en ligne).",
+                "naturalisation-btn": "Remplir le formulaire",
+                "gazette-title": "Gazette officielle",
+                "gazette-text": "Lire les décrets et communiqués ministériels et royaux.",
+                "gazette-btn": "Accéder"
+            },
+            en: {
+                "site-title": "Government of the Kingdom of Syldavia",
+                "site-subtitle": "Kingdom of Syldavia — Gouvernement de la Syldavie",
+                "main-title": "Official Communiqué",
+                "main-text": "Welcome to the joint portal of the Monarchy and the Government of Syldavia. Here you will find official announcements, citizen services, and texts in three languages.",
+                "btn-citizens": "Citizen Services",
+                "btn-gazette": "Official Gazette",
+                "btn-gov": "The Government",
+                "royal-title": "Royal Household",
+                "royal-message": "Message from Her Majesty: « At the service of the Syldavian people. »",
+                "royal-read": "Read the message",
+                "news-title": "Government News",
+                "news-list": [
+                    "Opening of the naturalization portal – National Citizenship Office.",
+                    "Publication of an indicative ZK rate – Royal Bank of Klow.",
+                    "Foreign Affairs communiqué – European cultural exchanges."
+                ],
+                "royal-bulletins-title": "Royal Household Bulletins",
+                "royal-bulletins-list": [
+                    "Weekly audience at the Palace of Klow — protocol calendar.",
+                    "Royal decree on the preservation of historical coats of arms.",
+                    "Commemorative edition of stamps « Eih bennek, eih blavek »."
+                ],
+                "id-card-title": "Identity Card",
+                "id-card-text": "Request or renew a national card (CR80 format).",
+                "id-card-btn": "Request",
+                "naturalisation-title": "Naturalization",
+                "naturalisation-text": "Access the official Kingdom form (PDF + online).",
+                "naturalisation-btn": "Fill out the form",
+                "gazette-title": "Official Gazette",
+                "gazette-text": "Read ministerial and royal decrees and announcements.",
+                "gazette-btn": "Access"
+            }
+        };
+
+        function setLanguage(lang) {
+            for (const [id, text] of Object.entries(translations[lang])) {
+                const el = document.getElementById(id);
+                if (!el) continue;
+                if (Array.isArray(text)) {
+                    el.innerHTML = text.map(item => `<li>${item}</li>`).join("");
+                } else {
+                    el.textContent = text;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
