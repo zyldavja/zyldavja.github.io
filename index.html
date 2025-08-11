@@ -6,6 +6,8 @@
   <title>Gouvernement du Royaume de Syldavie</title>
   <meta name="description" content="Portail officiel (parodique) du Gouvernement du Royaume de Syldavie – Краљевина Зылдавыа – Government of the Kingdom of Syldavia." />
   <meta name="color-scheme" content="light only" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+
   <style>
     :root{
       --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f4d35e; --line:#e6dfd1;
@@ -21,9 +23,18 @@
     .head{
       display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap
     }
-    .crest{width:52px;height:52px;border-radius:50%;background:var(--gold);
-      display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid #e5e7eb}
-    .crest svg{width:32px;height:32px}
+
+    /* Petit rond (blason) avec image logo.png */
+    .crest{
+      width:52px;height:52px;border-radius:50%;
+      background:var(--gold);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:var(--shadow);border:1px solid #e5e7eb;overflow:hidden
+    }
+    .crest img{
+      width:80%;height:80%;object-fit:contain;display:block
+    }
+
     h1{margin:0;font-size:22px}
     .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
 
@@ -36,7 +47,13 @@
     .langs button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:transparent}
 
     /* Hero */
-    .hero{background:linear-gradient(180deg,#ffffffcc,#fff8), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%23f4d35e" offset="0"/><stop stop-color="%23ffffff" offset="1"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><path d="M180 360c120-140 340-140 460 0 60 70 200 70 260 0 120-140 340-140 460 0" fill="none" stroke="%23eae2d3" stroke-width="2"/></svg>') center/cover no-repeat;border-block:1px solid var(--line)}
+    .hero{
+      background:
+        linear-gradient(180deg,#ffffffcc,#fff8),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%23f4d35e" offset="0"/><stop stop-color="%23ffffff" offset="1"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><path d="M180 360c120-140 340-140 460 0 60 70 200 70 260 0 120-140 340-140 460 0" fill="none" stroke="%23eae2d3" stroke-width="2"/></svg>')
+        center/cover no-repeat;
+      border-block:1px solid var(--line)
+    }
     .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;padding:36px 0}
     .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;box-shadow:var(--shadow);padding:18px}
     .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
@@ -71,8 +88,8 @@
     <div class="container head">
       <div style="display:flex;gap:14px;align-items:center">
         <div class="crest" aria-hidden="true">
-          <!-- mini blason : aigle stylisé -->
-          <svg viewBox="0 0 64 64" fill="#1f2d3a"><path d="M32 10c7 0 10 8 9 12 6-2 13 1 13 7-1 6-9 8-14 6 1 7-4 13-8 13s-9-6-8-13c-5 2-13 0-14-6 0-6 7-9 13-7-1-4 2-12 9-12Z"/></svg>
+          <!-- Logo rond -->
+          <img src="images/logo.png" alt="Logo du Royaume de Syldavie">
         </div>
         <div>
           <h1 id="siteTitle">Gouvernement du Royaume de Syldavie</h1>
@@ -188,63 +205,180 @@
   </footer>
 
   <script>
-  // — traductions (inchangées) —
-  const t = {
-    syl:{siteTitle:"Влада Краљевине Зылдавыa",siteSubtitle:"Краљевина Зылдавыa — Државни портал",heroTitle:"Комюнике офицял",heroLead:"Добро пожаловать на совместный портал Монархии и Правительства Зылдавыa. Здесь вы найдёте официальные объявления, услуги для граждан и тексты на трёх языках.",ctaCit:"Грађанске услуге",ctaGaz:"Краљевски гласник",ctaGov:"Влада",royalLabel:"Краљевски дом",royalTitle:"Порука Његовог Величанства",royalLink:"Прочитај поруку",govNewsTitle:"Вести Владе",royalNewsTitle:"Вести Краљевског дома",servicesTitle:"Услуге за грађане",cardIDTitle:"Лична карта",cardIDDesc:"Поднесите захтев или обновите националну карту (CR80).",cardIDCTA:"Поднеси захтев",naturalTitle:"Натурализација",naturalDesc:"Приступите званичном обрасцу Краљевине (PDF + онлајн).",naturalCTA:"Попунити образац",gazetteTitle:"Краљевски гласник",gazetteDesc:"Читајте указе и саопштења министарстава и двора.",gazetteCTA:"Отвори",govTitle:"Састав Владе",erikaRole:"Генерална директорка Националне службе за држављанство",fatherRole:"Министар спољних послова",footerNote:"© Влада Краљевине Зылдавыa — 2025 • Пародијски сајт, омаж Ержеу."},
-    fr:{siteTitle:"Gouvernement du Royaume de Syldavie",siteSubtitle:"Краљевина Зылдавыa — Portail de l'État",heroTitle:"Communiqué officiel",heroLead:"Bienvenue sur le portail conjoint Monarchie & Gouvernement du Royaume de Syldavie. Informations officielles, démarches et annonces en trois langues.",ctaCit:"Démarches citoyennes",ctaGaz:"Gazette officielle",ctaGov:"Le Gouvernement",royalLabel:"Maison royale",royalTitle:"Message de Sa Majesté",royalLink:"Lire le message",govNewsTitle:"Actualités du Gouvernement",royalNewsTitle:"Bulletins de la Maison Royale",servicesTitle:"Services aux citoyens",cardIDTitle:"Carte d’identité",cardIDDesc:"Demander ou renouveler une carte nationale (format CR80).",cardIDCTA:"Demander",naturalTitle:"Naturalisation",naturalDesc:"Accéder au formulaire officiel du Royaume (PDF + en ligne).",naturalCTA:"Remplir le formulaire",gazetteTitle:"Gazette officielle",gazetteDesc:"Lire les décrets et communiqués ministériels et royaux.",gazetteCTA:"Accéder",govTitle:"Composition du Gouvernement",erikaRole:"Directrice générale de l’Office national de la citoyenneté",fatherRole:"Ministre des Affaires étrangères",footerNote:"© Gouvernement du Royaume de Syldavie — 2025 • Site parodique, hommage à Hergé."},
-    en:{siteTitle:"Government of the Kingdom of Syldavia",siteSubtitle:"Kraljevina Zyldavja — State Portal",heroTitle:"Official communiqué",heroLead:"Welcome to the joint Monarchy & Government portal of the Kingdom of Syldavia. Official information, citizen services and announcements in three languages.",ctaCit:"Citizen services",ctaGaz:"Official gazette",ctaGov:"The Government",royalLabel:"Royal Household",royalTitle:"Message from His Majesty",royalLink:"Read the message",govNewsTitle:"Government news",royalNewsTitle:"Royal Household bulletins",servicesTitle:"Services",cardIDTitle:"Identity card",cardIDDesc:"Apply for or renew a national card (CR80 format).",cardIDCTA:"Apply",naturalTitle:"Naturalisation",naturalDesc:"Access the Kingdom’s official application (PDF + online).",naturalCTA:"Open form",gazetteTitle:"Official gazette",gazetteDesc:"Read decrees and ministerial & royal communiqués.",gazetteCTA:"Open",govTitle:"Government composition",erikaRole:"Director-General, National Office of Citizenship",fatherRole:"Minister of Foreign Affairs",footerNote:"© Government of the Kingdom of Syldavia — 2025 • Parody site, a tribute to Hergé."}
-  };
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const $ = id => document.getElementById(id);
-    const els = {
-      siteTitle: $("siteTitle"), siteSubtitle: $("siteSubtitle"),
-      heroTitle: $("heroTitle"), heroLead: $("heroLead"),
-      ctaCitizenship: $("ctaCitizenship"), ctaGazette: $("ctaGazette"), ctaGovernment: $("ctaGovernment"),
-      royalLabel: $("royalLabel"), royalTitle: $("royalTitle"), royalLink: $("royalLink"),
-      govNewsTitle: $("govNewsTitle"), royalNewsTitle: $("royalNewsTitle"),
-      servicesTitle: $("servicesTitle"),
-      cardIDTitle: $("cardIDTitle"), cardIDDesc: $("cardIDDesc"), cardIDCTA: $("cardIDCTA"),
-      naturalTitle: $("naturalTitle"), naturalDesc: $("naturalDesc"), naturalCTA: $("naturalCTA"),
-      gazetteTitle: $("gazetteTitle"), gazetteDesc: $("gazetteDesc"), gazetteCTA: $("gazetteCTA"),
-      govTitle: $("govTitle"), erikaRole: $("erikaRole"), fatherRole: $("fatherRole"),
-      footerNote: $("footerNote")
+    // Texte pour 3 langues (syl/fr/en)
+    const t = {
+      syl: {
+        siteTitle:"Влада Краљевине Зылдавыa",
+        siteSubtitle:"Краљевина Зылдавыa — Државни портал",
+        heroTitle:"Комюнике офицял",
+        heroLead:"Добро пожаловать на совместный портал Монархии и Правительства Зылдавыa. Здесь вы найдёте официальные объявления, услуги для граждан и тексты на трёх языках.",
+        ctaCit:"Грађанске услуге",
+        ctaGaz:"Краљевски гласник",
+        ctaGov:"Влада",
+        royalLabel:"Краљевски дом",
+        royalTitle:"Порука Његовог Величанства",
+        royalLink:"Прочитај поруку",
+        govNewsTitle:"Вести Владе",
+        royalNewsTitle:"Вести Краљевског дома",
+        servicesTitle:"Услуге за грађане",
+        cardIDTitle:"Лична карта",
+        cardIDDesc:"Поднесите захтев или обновите националну карту (CR80).",
+        cardIDCTA:"Поднеси захтев",
+        naturalTitle:"Натурализација",
+        naturalDesc:"Приступите званичном обрасцу Краљевине (PDF + онлајн).",
+        naturalCTA:"Попунити образац",
+        gazetteTitle:"Краљевски гласник",
+        gazetteDesc:"Читајте указе и саопштења министарстава и двора.",
+        gazetteCTA:"Отвори",
+        govTitle:"Састав Владе",
+        erikaRole:"Генерална директорка Националне службе за држављанство",
+        fatherRole:"Министар спољних послова",
+        footerNote:"© Влада Краљевине Зылдавыa — 2025 • Пародијски сајт, омаж Ержеу."
+      },
+      fr: {
+        siteTitle:"Gouvernement du Royaume de Syldavie",
+        siteSubtitle:"Краљевина Зылдавыa — Portail de l'État",
+        heroTitle:"Communiqué officiel",
+        heroLead:"Bienvenue sur le portail conjoint Monarchie & Gouvernement du Royaume de Syldavie. Informations officielles, démarches et annonces en trois langues.",
+        ctaCit:"Démarches citoyennes",
+        ctaGaz:"Gazette officielle",
+        ctaGov:"Le Gouvernement",
+        royalLabel:"Maison royale",
+        royalTitle:"Message de Sa Majesté",
+        royalLink:"Lire le message",
+        govNewsTitle:"Actualités du Gouvernement",
+        royalNewsTitle:"Bulletins de la Maison Royale",
+        servicesTitle:"Services aux citoyens",
+        cardIDTitle:"Carte d’identité",
+        cardIDDesc:"Demander ou renouveler une carte nationale (format CR80).",
+        cardIDCTA:"Demander",
+        naturalTitle:"Naturalisation",
+        naturalDesc:"Accéder au formulaire officiel du Royaume (PDF + en ligne).",
+        naturalCTA:"Remplir le formulaire",
+        gazetteTitle:"Gazette officielle",
+        gazetteDesc:"Lire les décrets et communiqués ministériels et royaux.",
+        gazetteCTA:"Accéder",
+        govTitle:"Composition du Gouvernement",
+        erikaRole:"Directrice générale de l’Office national de la citoyenneté",
+        fatherRole:"Ministre des Affaires étrangères",
+        footerNote:"© Gouvernement du Royaume de Syldavie — 2025 • Site parodique, hommage à Hergé."
+      },
+      en: {
+        siteTitle:"Government of the Kingdom of Syldavia",
+        siteSubtitle:"Kraljevina Zyldavja — State Portal",
+        heroTitle:"Official communiqué",
+        heroLead:"Welcome to the joint Monarchy & Government portal of the Kingdom of Syldavia. Official information, citizen services and announcements in three languages.",
+        ctaCit:"Citizen services",
+        ctaGaz:"Official gazette",
+        ctaGov:"The Government",
+        royalLabel:"Royal Household",
+        royalTitle:"Message from His Majesty",
+        royalLink:"Read the message",
+        govNewsTitle:"Government news",
+        royalNewsTitle:"Royal Household bulletins",
+        servicesTitle:"Services",
+        cardIDTitle:"Identity card",
+        cardIDDesc:"Apply for or renew a national card (CR80 format).",
+        cardIDCTA:"Apply",
+        naturalTitle:"Naturalisation",
+        naturalDesc:"Access the Kingdom’s official application (PDF + online).",
+        naturalCTA:"Open form",
+        gazetteTitle:"Official gazette",
+        gazetteDesc:"Read decrees and ministerial & royal communiqués.",
+        gazetteCTA:"Open",
+        govTitle:"Government composition",
+        erikaRole:"Director-General, National Office of Citizenship",
+        fatherRole:"Minister of Foreign Affairs",
+        footerNote:"© Government of the Kingdom of Syldavia — 2025 • Parody site, a tribute to Hergé."
+      }
     };
 
-    function apply(L){
-      for (const [k, el] of Object.entries(els)) {
-        if (!el) { console.warn("[i18n] Élément introuvable:", k); continue; }
-        el.textContent = L[k] ?? el.textContent;
-      }
-      // maj attribut lang du document
-      document.documentElement.setAttribute('lang', L===t.syl ? 'sr' : (L===t.en ? 'en' : 'fr'));
-      // état visuel des boutons
-      document.querySelectorAll('.langs button').forEach(b=>b.setAttribute('aria-pressed','false'));
-    }
+    const els = {
+      siteTitle: document.getElementById('siteTitle'),
+      siteSubtitle: document.getElementById('siteSubtitle'),
+      heroTitle: document.getElementById('heroTitle'),
+      heroLead: document.getElementById('heroLead'),
+      ctaCitizenship: document.getElementById('ctaCitizenship'),
+      ctaGazette: document.getElementById('ctaGazette'),
+      ctaGovernment: document.getElementById('ctaGovernment'),
+      royalLabel: document.getElementById('royalLabel'),
+      royalTitle: document.getElementById('royalTitle'),
+      royalLink: document.getElementById('royalLink'),
+      govNewsTitle: document.getElementById('govNewsTitle'),
+      royalNewsTitle: document.getElementById('royalNewsTitle'),
+      servicesTitle: document.getElementById('servicesTitle'),
+      cardIDTitle: document.getElementById('cardIDTitle'),
+      cardIDDesc: document.getElementById('cardIDDesc'),
+      cardIDCTA: document.getElementById('cardIDCTA'),
+      naturalTitle: document.getElementById('naturalTitle'),
+      naturalDesc: document.getElementById('naturalDesc'),
+      naturalCTA: document.getElementById('naturalCTA'),
+      gazetteTitle: document.getElementById('gazetteTitle'),
+      gazetteDesc: document.getElementById('gazetteDesc'),
+      gazetteCTA: document.getElementById('gazetteCTA'),
+      govTitle: document.getElementById('govTitle'),
+      erikaRole: document.getElementById('erikaRole'),
+      fatherRole: document.getElementById('fatherRole'),
+      footerNote: document.getElementById('footerNote')
+    };
 
     function setLang(code){
       const L = t[code] || t.fr;
-      apply(L);
-      // bouton actif
-      const btn = document.getElementById('lang-'+code);
-      if (btn) btn.setAttribute('aria-pressed','true');
-      // mémoriser
+
+      els.siteTitle.textContent = L.siteTitle;
+      els.siteSubtitle.textContent = L.siteSubtitle;
+      els.heroTitle.textContent = L.heroTitle;
+      els.heroLead.textContent = L.heroLead;
+      els.ctaCitizenship.textContent = L.ctaCit;
+      els.ctaGazette.textContent = L.ctaGaz;
+      els.ctaGovernment.textContent = L.ctaGov;
+      els.royalLabel.textContent = L.royalLabel;
+      els.royalTitle.textContent = L.royalTitle;
+      els.royalLink.textContent = L.royalLink;
+      els.govNewsTitle.textContent = L.govNewsTitle;
+      els.royalNewsTitle.textContent = L.royalNewsTitle;
+      els.servicesTitle.textContent = L.servicesTitle;
+      els.cardIDTitle.textContent = L.cardIDTitle;
+      els.cardIDDesc.textContent = L.cardIDDesc;
+      els.cardIDCTA.textContent = L.cardIDCTA;
+      els.naturalTitle.textContent = L.naturalTitle;
+      els.naturalDesc.textContent = L.naturalDesc;
+      els.naturalCTA.textContent = L.naturalCTA;
+      els.gazetteTitle.textContent = L.gazetteTitle;
+      els.gazetteDesc.textContent = L.gazetteDesc;
+      els.gazetteCTA.textContent = L.gazetteCTA;
+      els.govTitle.textContent = L.govTitle;
+      els.erikaRole.textContent = L.erikaRole;
+      els.fatherRole.textContent = L.fatherRole;
+      els.footerNote.textContent = L.footerNote;
+
+      // aria-pressed visuel
+      document.querySelectorAll('.langs button').forEach(b=>b.setAttribute('aria-pressed','false'));
+      const active = document.getElementById('lang-'+code);
+      if (active) active.setAttribute('aria-pressed','true');
+
+      // lang de la page
+      document.documentElement.setAttribute('lang', code === 'syl' ? 'sr' : code);
+
       try { localStorage.setItem('lang', code); } catch(e){}
-      console.log("[i18n] langue →", code);
     }
 
-    // Exposer global (au cas où)
-    window.setLang = setLang;
+    // Bind header
+    document.getElementById('lang-syl').onclick = ()=> setLang('syl');
+    document.getElementById('lang-fr').onclick  = ()=> setLang('fr');
+    document.getElementById('lang-en').onclick  = ()=> setLang('en');
 
-    // Bind boutons header + footer
-    const bind = (id, code) => { const b=$(id); if(b){ b.onclick=(e)=>{ e.preventDefault?.(); setLang(code); }; } };
-    bind('lang-syl','syl'); bind('lang-fr','fr'); bind('lang-en','en');
-    bind('footSyl','syl');  bind('footFr','fr');  bind('footEn','en');
+    // Bind footer
+    const bind = (id, code) => {
+      const a = document.getElementById(id);
+      if (!a) return;
+      a.addEventListener('click', (e)=>{ e.preventDefault(); setLang(code); });
+    };
+    bind('footSyl','syl'); bind('footFr','fr'); bind('footEn','en');
 
-    // Langue initiale depuis storage ou FR
-    const initial = (()=>{ try{return localStorage.getItem('lang')||'fr';}catch(e){return 'fr';} })();
+    // Langue par défaut
+    const initial = (()=>{ try { return localStorage.getItem('lang') || 'fr'; } catch(e){ return 'fr'; } })();
     setLang(initial);
-  });
- </script>
+  </script>
 </body>
 </html>
