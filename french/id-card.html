@@ -1,45 +1,158 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demande de Carte d'Identité - Royaume de Syldavie</title>
-  <link rel="stylesheet" href="../style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demande de carte d’identité – Royaume de Syldavie</title>
+  <meta name="color-scheme" content="light only" />
+  <!-- Favicon (depuis le sous-dossier french ⇒ remonter d’un niveau) -->
+  <link rel="icon" type="image/png" href="../images/favicon.png" />
+
+  <style>
+    :root{--ink:#1f2d3a;--paper:#f7f3ea;--card:#fff;--gold:#f7d449;--line:#e6dfd1;--muted:#6b7280;--accent:#223b54;--shadow:0 10px 20px rgba(31,45,58,.08)}
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+    .container{max-width:920px;margin:auto;padding:0 16px}
+
+    header{padding:22px 0}
+    .head{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:14px;align-items:center}
+    .crest{width:52px;height:52px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;border:1px solid #e5e7eb;box-shadow:var(--shadow);overflow:hidden}
+    .crest img{width:80%;height:80%;object-fit:contain;display:block}
+    h1{margin:0;font-size:22px}
+    .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;box-shadow:var(--shadow);padding:18px}
+
+    form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    form .row-3{grid-template-columns:1fr 1fr 1fr}
+    label{font-weight:600;display:block;margin-top:10px}
+    input,select{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
+    .help{font-size:12px;color:var(--muted)}
+    .actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+    .btn{background:var(--accent);color:#fff;border:none;border-radius:12px;padding:10px 14px;cursor:pointer}
+    .btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
+    .fee{margin-top:10px;padding:10px;border:1px dashed #e5e7eb;border-radius:10px;background:#fff}
+    footer{padding:28px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted);margin-top:28px}
+
+    @media (max-width:840px){form .row,form .row-3{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <header>
-    <div class="crest">
-      <img src="../images/logo.png" alt="Blason de la Syldavie">
+  <header class="container head">
+    <div class="brand">
+      <div class="crest"><img src="../images/logo.png" alt="Blason de Syldavie"></div>
+      <div>
+        <h1>Demande de carte d’identité</h1>
+        <div class="subtitle">Portail du Gouvernement du Royaume de Syldavie</div>
+      </div>
     </div>
-    <h1>Demande de Carte d'Identité</h1>
+    <nav><a href="../index.html">← Retour accueil</a></nav>
   </header>
 
-  <main>
-    <form action="#" method="post" class="form-card">
-      <label for="nom">Nom :</label>
-      <input type="text" id="nom" name="nom" required>
+  <main class="container">
+    <section class="card">
+      <!--
+        Envoi: pour un site statique on passe par mailto.
+        Si tu préfères une vraie réception serveur, on branchera un service (Formspree / Netlify Forms).
+      -->
+      <form action="mailto:idcard@syldavia.eu?subject=Demande%20de%20carte%20d%27identit%C3%A9" method="post" enctype="text/plain" id="idForm">
+        <div class="row">
+          <div>
+            <label for="nom">Nom</label>
+            <input id="nom" name="Nom" required />
+          </div>
+          <div>
+            <label for="prenoms">Prénom(s)</label>
+            <input id="prenoms" name="Prenoms" required />
+          </div>
+        </div>
 
-      <label for="prenom">Prénom :</label>
-      <input type="text" id="prenom" name="prenom" required>
+        <div class="row-3">
+          <div>
+            <label for="dob">Date de naissance</label>
+            <input id="dob" name="Date_naissance" type="date" required />
+          </div>
+          <div>
+            <label for="sexe">Sexe</label>
+            <select id="sexe" name="Sexe" required>
+              <option value="">— Sélectionnez —</option>
+              <option>F</option><option>M</option><option>X</option>
+            </select>
+          </div>
+          <div>
+            <label for="reg">N° registre national syldave</label>
+            <!-- Format exigé: 6 chiffres - SYL - 3 chiffres - 2 chiffres -->
+            <input
+              id="reg"
+              name="Registre_national_syldave"
+              type="text"
+              inputmode="numeric"
+              placeholder="XXXXXX-SYL-XXX-XX"
+              pattern="^\d{6}-SYL-\d{3}-\d{2}$"
+              required
+              aria-describedby="regHelp"
+            />
+            <div id="regHelp" class="help">Format: <code>XXXXXX-SYL-XXX-XX</code> (X = chiffre). Exemple: <em>950228‑SYL‑987‑47</em></div>
+          </div>
+        </div>
 
-      <label for="date-naissance">Date de naissance :</label>
-      <input type="date" id="date-naissance" name="date-naissance" required>
+        <div class="fee">💰 Des frais de <strong>20 €</strong> sont requis pour l’émission de la carte.</div>
 
-      <label for="sexe">Sexe :</label>
-      <select id="sexe" name="sexe" required>
-        <option value="">-- Sélectionnez --</option>
-        <option value="F">Femme</option>
-        <option value="H">Homme</option>
-        <option value="X">Autre / Ne pas préciser</option>
-      </select>
-
-      <label for="registre">Numéro de registre national syldave :</label>
-      <input type="text" id="registre" name="registre" required pattern="[0-9]{11}" placeholder="11 chiffres">
-
-      <p class="frais">💰 Des frais de 20 € sont requis pour l’émission de la carte.</p>
-
-      <button type="submit">Soumettre la demande</button>
-    </form>
+        <div class="actions">
+          <button class="btn" type="submit">Soumettre la demande</button>
+          <button class="btn ghost" type="reset">Effacer</button>
+        </div>
+      </form>
+    </section>
   </main>
+
+  <footer class="container">© Gouvernement du Royaume de Syldavie — 2025 • Site parodique, hommage à Hergé.</footer>
+
+  <script>
+    // Masque intelligent pour le N° registre: XXXXXX-SYL-XXX-XX (X = chiffres)
+    (function () {
+      const input = document.getElementById('reg');
+      if (!input) return;
+
+      input.addEventListener('input', (e) => {
+        // garder seulement les chiffres et forcer le 'SYL' fixe au bon endroit
+        const digits = e.target.value.replace(/\D/g, '').slice(0, 11); // 6 + 3 + 2 = 11 chiffres
+        let out = '';
+
+        // 6 premiers
+        const a = digits.slice(0, 6);
+        if (a) out += a;
+        if (digits.length > 6) out += '-SYL-';
+
+        // 3 suivants
+        const b = digits.slice(6, 9);
+        if (b) out += b;
+        if (digits.length > 9) out += '-';
+
+        // 2 derniers
+        const c = digits.slice(9, 11);
+        if (c) out += c;
+
+        e.target.value = out.toUpperCase();
+      });
+
+      // empêcher d'entrer des lettres ailleurs que le bloc "SYL" (qu'on insère nous-mêmes)
+      input.addEventListener('keypress', (ev) => {
+        const ch = String.fromCharCode(ev.which || ev.keyCode);
+        if (!/\d/.test(ch)) ev.preventDefault();
+      });
+
+      // validation HTML5 + message clair si le pattern ne match pas
+      document.getElementById('idForm').addEventListener('submit', (ev) => {
+        if (!input.checkValidity()) {
+          ev.preventDefault();
+          alert("Le numéro de registre national doit respecter le format : XXXXXX-SYL-XXX-XX (X = chiffre).");
+          input.focus();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
