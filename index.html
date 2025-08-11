@@ -3,68 +3,110 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Syldavia — Choix de la langue</title>
-  <meta name="color-scheme" content="light only" />
+  <title>Royaume de Syldavie — Portail</title>
+  <meta name="description" content="Portail d’accès aux versions Français, English et Syldavian du site du Royaume de Syldavie." />
   <link rel="icon" type="image/png" href="images/favicon.png" />
+  <meta name="color-scheme" content="light only" />
   <style>
     :root{
-      --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f7d449; --line:#e6dfd1;
-      --muted:#6b7280; --accent:#223b54; --shadow:0 10px 20px rgba(31,45,58,.08);
+      --ink:#1f2d3a; --paper:#f7f3ea; --card:#ffffff; --gold:#f7d449;
+      --muted:#6b7280; --accent:#223b54; --line:#e6dfd1;
+      --shadow:0 10px 22px rgba(31,45,58,.08);
+      --radius:18px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font:16px/1.5 system-ui,Segoe UI,Roboto,Arial,sans-serif}
-    .container{max-width:900px;margin:auto;padding:30px 16px}
-    .ribbon{background:var(--accent);color:#fff;font-size:12px;text-align:center;padding:8px}
-    header{padding:26px 0}
-    .head{display:flex;align-items:center;gap:14px}
-    .crest{width:56px;height:56px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);border:1px solid #e5e7eb;overflow:hidden}
-    .crest img{width:82%;height:82%;object-fit:contain;display:block}
-    h1{margin:0;font-size:24px}
-    .subtitle{font-size:13px;color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;box-shadow:var(--shadow);padding:18px;text-align:center}
-    .flag{font-size:42px;line-height:1}
-    .btn{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;padding:10px 14px;border-radius:12px;text-decoration:none}
-    footer{margin-top:26px;padding:22px 0;border-top:1px solid var(--line);font-size:14px;color:var(--muted);text-align:center}
-    @media (max-width:800px){.grid{grid-template-columns:1fr}}
+    html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",Arial,"Helvetica Neue",sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:auto;padding:0 16px}
+
+    /* Header */
+    header{padding:28px 0}
+    .head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:14px}
+    .crest{width:54px;height:54px;border-radius:50%;background:var(--gold);display:grid;place-items:center;
+      border:1px solid #e5e7eb;box-shadow:var(--shadow);overflow:hidden}
+    .crest img{width:80%;height:80%;object-fit:contain;display:block}
+    h1{margin:0;font-size:24px;font-weight:800;letter-spacing:.1px}
+    .subtitle{font-size:13px;color:var(--muted);margin-top:2px}
+
+    /* Intro */
+    .intro{padding:6px 0 2px 0;color:var(--muted);font-size:14px}
+
+    /* Language grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:22px 0 36px}
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:14px;min-height:180px}
+    .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#374151;background:#f2f4f7;border:1px solid #e5e7eb;border-radius:999px;padding:6px 10px;letter-spacing:.08em;text-transform:uppercase;width:max-content}
+    .card h2{margin:0;font-size:20px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .actions{margin-top:auto}
+    .btn{display:inline-block;background:var(--accent);color:#fff;border-radius:14px;padding:10px 14px;font-size:14px;box-shadow:var(--shadow)}
+    .btn:focus-visible{outline:3px solid #94b4cf;outline-offset:2px}
+    .btn.ghost{background:#fff;color:var(--accent);border:1px solid #e5e7eb}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:1000px){ .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} .subtitle{text-wrap:balance} }
   </style>
 </head>
 <body>
-  <div class="ribbon">Portail institutionnel fictif — hommage à Hergé. « Eih bennek, eih blavek ».</div>
-
-  <div class="container">
-    <header class="head">
-      <div class="crest"><img src="images/logo.png" alt="Syldavia logo"></div>
-      <div>
-        <h1>Royaume de Syldavie — Portail</h1>
-        <div class="subtitle">Choisissez votre langue / Choose your language / Изаберите језик</div>
+  <header>
+    <div class="container head">
+      <div class="brand">
+        <div class="crest" aria-hidden="true">
+          <img src="images/logo.png" alt="">
+        </div>
+        <div>
+          <h1>Royaume de Syldavie — Portail</h1>
+          <div class="subtitle">Choisissez votre langue · Choose your language · Изаберите језик</div>
+        </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <section class="grid">
-      <a class="card" href="french/index.html">
-        <div class="flag">🇫🇷</div>
-        <h3 style="margin:.4rem 0 0 0">Français</h3>
-        <div class="subtitle">Portail du Gouvernement</div>
-        <span class="btn">Entrer</span>
-      </a>
+  <main class="container">
+    <p class="intro">Accédez au site gouvernemental dans la langue de votre choix.</p>
 
-      <a class="card" href="english/index.html">
-        <div class="flag">🇬🇧</div>
-        <h3 style="margin:.4rem 0 0 0">English</h3>
-        <div class="subtitle">Government portal</div>
-        <span class="btn">Enter</span>
-      </a>
+    <section class="grid" aria-label="Sélecteur de langue">
+      <!-- FR -->
+      <article class="card">
+        <span class="tag" aria-hidden="true">FR · Français</span>
+        <h2>Français</h2>
+        <p>Portail du Gouvernement du Royaume de Syldavie.</p>
+        <div class="actions">
+          <a class="btn" href="french/index.html" rel="nofollow">Entrer</a>
+        </div>
+      </article>
 
-      <a class="card" href="syldavian/index.html">
-        <div class="flag">🦅</div>
-        <h3 style="margin:.4rem 0 0 0">Сылдавянски</h3>
-        <div class="subtitle">Државни портал</div>
-        <span class="btn">Отвори</span>
-      </a>
+      <!-- EN -->
+      <article class="card">
+        <span class="tag" aria-hidden="true">EN · English</span>
+        <h2>English</h2>
+        <p>Government portal of the Kingdom of Syldavia.</p>
+        <div class="actions">
+          <a class="btn" href="english/index.html" rel="nofollow">Enter</a>
+        </div>
+      </article>
+
+      <!-- SYLDAVIAN (cyrillique) -->
+      <article class="card">
+        <span class="tag" aria-hidden="true">СЫЛ · Syldavian</span>
+        <h2>Сылдавянски</h2>
+        <p>Државни портал Краљевине Зылдавыa.</p>
+        <div class="actions">
+          <a class="btn" href="syldavian/index.html" rel="nofollow">Отвори</a>
+        </div>
+      </article>
     </section>
+  </main>
 
-    <footer>© Royaume de Syldavie — 2025 • Site parodique, hommage à Hergé.</footer>
-  </div>
+  <footer>
+    <div class="container">
+      © Gouvernement du Royaume de Syldavie — 2025 · Site parodique, hommage à Hergé.
+    </div>
+  </footer>
 </body>
 </html>
