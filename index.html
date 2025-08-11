@@ -1,167 +1,141 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gouvernement du Royaume de Syldavie</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gouvernement du Royaume de Syldavie</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdfaf3;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #f4e7b6;
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 2px solid #d4c089;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin: 0;
+      font-size: 1rem;
+      color: #666;
+    }
+    .lang-buttons {
+      margin-top: 0.5rem;
+    }
+    .lang-buttons button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin-top: 0;
+    }
+    .buttons {
+      margin-top: 10px;
+    }
+    .buttons button {
+      margin-right: 10px;
+      padding: 5px 10px;
+      border: none;
+      background-color: #004aad;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .buttons .secondary {
+      background-color: #d4c089;
+      color: black;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="top-banner">
-            Portail institutionnel fictif — hommage à Hergé. « Eih bennek, eih blavek ».
-        </div>
-        <div class="header-content">
-            <h1 id="site-title">Gouvernement du Royaume de Syldavie</h1>
-            <p id="site-subtitle">Кралевина Зылдавыа — Government of the Kingdom of Syldavia</p>
-            <div class="lang-buttons">
-                <button onclick="setLanguage('syld')">Сылдавянски</button>
-                <button onclick="setLanguage('fr')">Français</button>
-                <button onclick="setLanguage('en')">English</button>
-            </div>
-        </div>
-    </header>
+  <header>
+    <h1>Gouvernement du Royaume de Syldavie</h1>
+    <p>Кралевина Зылдавия — Government of the Kingdom of Syldavia</p>
+    <div class="lang-buttons">
+      <button onclick="setLanguage('syldave')">Сылдавянски</button>
+      <button onclick="setLanguage('fr')">Français</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
+  </header>
 
-    <main>
-        <!-- Bloc principal -->
-        <section class="main-box">
-            <div class="main-left">
-                <h2 id="main-title">Комюнике официял</h2>
-                <p id="main-text">Добро пожаловать на совместный портал Монархии и Правительства Зылдавыа. Здесь вы найдете официальные объявления, услуги для граждан и тексты на трёх языках.</p>
-                <div class="buttons">
-                    <a href="#" id="btn-citizens" class="btn">Démarches citoyennes</a>
-                    <a href="#" id="btn-gazette" class="btn yellow">Gazette officielle</a>
-                    <a href="#" id="btn-gov" class="btn">Le Gouvernement</a>
-                </div>
-            </div>
-            <div class="main-right">
-                <h3 id="royal-title">Maison Royale</h3>
-                <p id="royal-message">Message de Sa Majesté : « Au service du peuple syldave. »</p>
-                <a href="#" id="royal-read" class="btn">Lire le message</a>
-            </div>
-        </section>
+  <main>
+    <div class="card">
+      <h2>Комюнике официял</h2>
+      <p>Добро пожаловать на совместный портал Монархии и Правительства Зылдавия...</p>
+      <div class="buttons">
+        <button>Démarches citoyennes</button>
+        <button class="secondary">Gazette officielle</button>
+        <button class="secondary">Le Gouvernement</button>
+      </div>
+    </div>
 
-        <!-- Actualités -->
-        <section class="news">
-            <div>
-                <h3 id="news-title">Actualités du Gouvernement</h3>
-                <ul id="news-list">
-                    <li>Ouverture du portail de naturalisation – Office national de la citoyenneté.</li>
-                    <li>Publication d’un taux indicatif ZK – Banque Royale de Klow.</li>
-                    <li>Communiqué des Affaires étrangères – échanges culturels européens.</li>
-                </ul>
-            </div>
-            <div>
-                <h3 id="royal-bulletins-title">Bulletins de la Maison Royale</h3>
-                <ul id="royal-bulletins-list">
-                    <li>Audience hebdomadaire au Palais de Klow — calendrier protocolaire.</li>
-                    <li>Décret royal sur la préservation des armoiries historiques.</li>
-                    <li>Édition commémorative des timbres « Eih bennek, eih blavek ».</li>
-                </ul>
-            </div>
-        </section>
+    <div class="card">
+      <h2>Maison Royale</h2>
+      <p>Message de Sa Majesté — « Au service du peuple syldave. »</p>
+    </div>
 
-        <!-- Services -->
-        <section class="services">
-            <div class="service">
-                <h4 id="id-card-title">Carte d’identité</h4>
-                <p id="id-card-text">Demander ou renouveler une carte nationale (format CR80).</p>
-                <a href="#" id="id-card-btn" class="btn">Demander</a>
-            </div>
-            <div class="service">
-                <h4 id="naturalisation-title">Naturalisation</h4>
-                <p id="naturalisation-text">Accéder au formulaire officiel du Royaume (PDF + en ligne).</p>
-                <a href="#" id="naturalisation-btn" class="btn">Remplir le formulaire</a>
-            </div>
-            <div class="service">
-                <h4 id="gazette-title">Gazette officielle</h4>
-                <p id="gazette-text">Lire les décrets et communiqués ministériels et royaux.</p>
-                <a href="#" id="gazette-btn" class="btn">Accéder</a>
-            </div>
-        </section>
-    </main>
+    <div class="card">
+      <h2>Actualités du Gouvernement</h2>
+      <ul>
+        <li>Ouverture du portail de naturalisation — Office national de la citoyenneté.</li>
+        <li>Publication d’un taux indicatif ZK — Banque Royale de Klow.</li>
+        <li>Communiqué des Affaires étrangères — échanges culturels européens.</li>
+      </ul>
+    </div>
 
-    <script>
-        const translations = {
-            fr: {
-                "site-title": "Gouvernement du Royaume de Syldavie",
-                "site-subtitle": "Кралевина Зылдавыа — Government of the Kingdom of Syldavia",
-                "main-title": "Communiqué officiel",
-                "main-text": "Bienvenue sur le portail commun de la Monarchie et du Gouvernement de Syldavie. Vous trouverez ici les annonces officielles, les services aux citoyens et des textes en trois langues.",
-                "btn-citizens": "Démarches citoyennes",
-                "btn-gazette": "Gazette officielle",
-                "btn-gov": "Le Gouvernement",
-                "royal-title": "Maison Royale",
-                "royal-message": "Message de Sa Majesté : « Au service du peuple syldave. »",
-                "royal-read": "Lire le message",
-                "news-title": "Actualités du Gouvernement",
-                "news-list": [
-                    "Ouverture du portail de naturalisation – Office national de la citoyenneté.",
-                    "Publication d’un taux indicatif ZK – Banque Royale de Klow.",
-                    "Communiqué des Affaires étrangères – échanges culturels européens."
-                ],
-                "royal-bulletins-title": "Bulletins de la Maison Royale",
-                "royal-bulletins-list": [
-                    "Audience hebdomadaire au Palais de Klow — calendrier protocolaire.",
-                    "Décret royal sur la préservation des armoiries historiques.",
-                    "Édition commémorative des timbres « Eih bennek, eih blavek »."
-                ],
-                "id-card-title": "Carte d’identité",
-                "id-card-text": "Demander ou renouveler une carte nationale (format CR80).",
-                "id-card-btn": "Demander",
-                "naturalisation-title": "Naturalisation",
-                "naturalisation-text": "Accéder au formulaire officiel du Royaume (PDF + en ligne).",
-                "naturalisation-btn": "Remplir le formulaire",
-                "gazette-title": "Gazette officielle",
-                "gazette-text": "Lire les décrets et communiqués ministériels et royaux.",
-                "gazette-btn": "Accéder"
-            },
-            en: {
-                "site-title": "Government of the Kingdom of Syldavia",
-                "site-subtitle": "Kingdom of Syldavia — Gouvernement de la Syldavie",
-                "main-title": "Official Communiqué",
-                "main-text": "Welcome to the joint portal of the Monarchy and the Government of Syldavia. Here you will find official announcements, citizen services, and texts in three languages.",
-                "btn-citizens": "Citizen Services",
-                "btn-gazette": "Official Gazette",
-                "btn-gov": "The Government",
-                "royal-title": "Royal Household",
-                "royal-message": "Message from Her Majesty: « At the service of the Syldavian people. »",
-                "royal-read": "Read the message",
-                "news-title": "Government News",
-                "news-list": [
-                    "Opening of the naturalization portal – National Citizenship Office.",
-                    "Publication of an indicative ZK rate – Royal Bank of Klow.",
-                    "Foreign Affairs communiqué – European cultural exchanges."
-                ],
-                "royal-bulletins-title": "Royal Household Bulletins",
-                "royal-bulletins-list": [
-                    "Weekly audience at the Palace of Klow — protocol calendar.",
-                    "Royal decree on the preservation of historical coats of arms.",
-                    "Commemorative edition of stamps « Eih bennek, eih blavek »."
-                ],
-                "id-card-title": "Identity Card",
-                "id-card-text": "Request or renew a national card (CR80 format).",
-                "id-card-btn": "Request",
-                "naturalisation-title": "Naturalization",
-                "naturalisation-text": "Access the official Kingdom form (PDF + online).",
-                "naturalisation-btn": "Fill out the form",
-                "gazette-title": "Official Gazette",
-                "gazette-text": "Read ministerial and royal decrees and announcements.",
-                "gazette-btn": "Access"
-            }
-        };
+    <div class="card">
+      <h2>Bulletins de la Maison Royale</h2>
+      <ul>
+        <li>Audience hebdomadaire au Palais de Klow — calendrier protocolaire.</li>
+        <li>Décret royal sur la préservation des armoiries historiques.</li>
+        <li>Édition commémorative des timbres « Eih bennek, eih blavek ».</li>
+      </ul>
+    </div>
 
-        function setLanguage(lang) {
-            for (const [id, text] of Object.entries(translations[lang])) {
-                const el = document.getElementById(id);
-                if (!el) continue;
-                if (Array.isArray(text)) {
-                    el.innerHTML = text.map(item => `<li>${item}</li>`).join("");
-                } else {
-                    el.textContent = text;
-                }
-            }
-        }
-    </script>
+    <div class="card">
+      <h2>Services aux citoyens</h2>
+      <div class="buttons">
+        <button>Carte d’identité</button>
+        <button>Naturalisation</button>
+        <button>Gazette officielle</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Portail institutionnel fictif — hommage à Hergé. « Eih bennek, eih blavek ».
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
